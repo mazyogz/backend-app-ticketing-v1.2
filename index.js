@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const { verifyToken } = require('./middleware/VerifyToken')
-const {getUsers, register, login, logout, editUsers} = require('./controller/UserController')
+const {getUsers, register, login, logout, editUsers, forgotPasswordOTP, resetPasswordOTP} = require('./controller/UserController')
 const prefix = '/v1/api/';
 
 // const db = require('./config/db.config'); //Connect to database railway
@@ -22,10 +22,8 @@ app.post(prefix + 'register', register);
 app.post(prefix + 'login', login);
 app.delete(prefix + 'logout', logout);
 app.put(prefix + 'editusers', verifyToken, editUsers);
-// app.post(prefix + 'forgotPassword', forgotPassword);
-// app.post(prefix + 'forgot-password-otp', forgotPasswordOTP);
-// app.post(prefix + 'reset-password', resetPassword);
-// app.post(prefix + 'reset-password-otp', resetPasswordOTP);
+app.post(prefix + 'forgot-password-otp', forgotPasswordOTP);
+app.post(prefix + 'reset-password-otp', resetPasswordOTP);
 
 db.authenticate()
   .then(() => console.log('Database connected'))

@@ -210,3 +210,88 @@ exports.logout = (req, res) => {
     res.status(500).json({ success: false, message: "Logout Failed" });
   }
 };
+
+exports.forgotPasswordOTP = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    const users = await user.findOne({ where: { email } });
+
+    if (!users) {
+      return res.status(400).json({ success: false, message: 'Email not found' });
+    }
+
+    const otp = Math.floor(100000 + Math.random() * 900000);
+
+    const expiresInMinutes = 1;
+    const expiresAt = new Date();
+    expiresAt.setMinutes(expiresAt.getMinutes() + expiresInMinutes);
+
+    users.otp = otp;
+    users.otpExpiresAt = expiresAt;
+    await users.save();
+
+    const transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+        user: 'symphonyseatsofficial@gmail.com',
+        pass: 'tvrj jgxx ifnf xfaj',
+      },
+    });
+
+    const mailOptions = {
+      from: 'Symphony Seats Official',
+      to: email,
+      subject: 'Password Reset OTP',
+      text:
+        `You are receiving this email because you requested a password reset for your account.\n\n` +
+        `Please use the following OTP to reset your password:\n\n` +
+        `OTP: ${otp}\n\n` +
+        `This OTP will expire in ${expiresInMinutes} minutes.\n` +
+        `If you did not request this, please ignore this email and your password will remain unchanged.\n`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+        return res.status(500).json({ success: false, message: 'Failed to send reset OTP' });
+      }
+      console.log('Reset OTP sent:', info.response);
+
+      return res.status(200).json({ success: true, message: 'Reset OTP sent'});
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: 'Forgot password failed' });
+  }
+};
+
+exports.resetPasswordOTP = async (req, res) => {
+  try {
+    const { otp, newPassword } = req.body;
+
+    const users = await user.findOne({ where: { otp } });
+
+    if (!users) {
+      return res.status(400).json({ success: false, message: 'Invalid OTP' });
+    }
+    
+    const currentTime = new Date();
+    if (currentTime > user.otpExpiresAt) {
+      return res.status(400).json({ success: false, message: 'OTP has expired' });
+    }
+
+    const salt = 10;
+    users.password = await bcrypt.hash(newPassword, salt);
+
+    users.otp = null;
+    users.otpExpiresAt = null;
+    
+    await users.save();
+    
+    return res.status(200).json({ success: true, message: 'Password updated successfully' });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: 'Password reset failed' });
+  }
+};
