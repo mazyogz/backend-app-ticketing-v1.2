@@ -9,7 +9,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
-const {getUsers, register, login} = require('./controller/UserController')
+const { verifyToken } = require('./middleware/VerifyToken')
+const {getUsers, register, login, logout, editUsers} = require('./controller/UserController')
 const prefix = '/v1/api/';
 
 // const db = require('./config/db.config'); //Connect to database railway
@@ -19,8 +20,8 @@ const db = require('./config/db.local.config'); //Connect to database local
 app.get(prefix + 'users', getUsers);
 app.post(prefix + 'register', register);
 app.post(prefix + 'login', login);
-// app.put(prefix + 'editusers', verifyToken, editUser);
-// app.delete(prefix + 'logout', logout);
+app.delete(prefix + 'logout', logout);
+app.put(prefix + 'editusers', verifyToken, editUsers);
 // app.post(prefix + 'forgotPassword', forgotPassword);
 // app.post(prefix + 'forgot-password-otp', forgotPasswordOTP);
 // app.post(prefix + 'reset-password', resetPassword);
