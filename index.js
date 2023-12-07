@@ -11,7 +11,7 @@ app.use(cors());
 
 const { event } = require('./models');
 const imagekit = require('./lib/imagekit');
-const upload = require('./middleware/uploader');
+const upload = require('./middleware/Uploader');
 
 const { verifyToken, verifyAdmin } = require('./middleware/VerifyToken')
 const {getUsers, register, registerAdmin, login, loginAdmin, logout, editUsers, forgotPasswordOTP, resetPasswordOTP} = require('./controller/UserController')
