@@ -15,7 +15,7 @@ const upload = require('./middleware/Uploader');
 
 const { verifyToken, verifyAdmin } = require('./middleware/VerifyToken')
 const {getUsers, register, registerAdmin, login, loginAdmin, logout, editUsers, forgotPasswordOTP, resetPasswordOTP} = require('./controller/UserController')
-const {createEvent} = require("./controller/EventController")
+const {getAllEvent, getAllEventAdmin, getEventById, getEventByIdAdmin} = require("./controller/EventController")
 const prefix = '/v1/api/';
 
 // const db = require('./config/db.config'); //Connect to database railway
@@ -33,7 +33,14 @@ app.put(prefix + 'editusers-admin', verifyAdmin, editUsers);
 app.post(prefix + 'forgot-password-otp', forgotPasswordOTP);
 app.post(prefix + 'reset-password-otp', resetPasswordOTP);
 
+//EVENT LANDING PAGE
+app.get(prefix + 'events', getAllEvent);
+app.get(prefix + 'events/:eventId', getEventById);
+
 //EVENT ADMIN
+app.get(prefix + 'admin/events', verifyAdmin, getAllEventAdmin);
+app.get(prefix + 'admin/event/:eventId', verifyAdmin, getEventByIdAdmin);
+
 app.post(
   prefix + "create-event",
   verifyAdmin,
@@ -88,6 +95,101 @@ app.post(
       });
     } catch (error) {
       console.log(error);
+    }
+  }
+);
+
+app.put(
+  prefix + "edit-event/:eventId",
+  verifyAdmin,
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      const eventId = req.params.eventId;
+
+      // request body => req.body.name
+      const {
+        event_name,
+        jam_mulai,
+        jam_selesai,
+        venue,
+        date,
+        guest,
+        description,
+        syarat,
+        status,
+      } = req.body;
+
+      const file = req.file;
+
+      console.log(file);
+
+      // jika ada file yang diupload, proses perubahan gambar
+      if (file) {
+        // untuk mendapatkan extension file
+        const split = file.originalname.split(".");
+        const ext = split[split.length - 1];
+
+        // proses upload file ke imagekit
+        const img = await imagekit.upload({
+          file: file.buffer,
+          fileName: `IMG-${Date.now()}.${ext}`,
+        });
+
+        // perbarui data event termasuk gambar baru
+        await event.update(
+          {
+            event_name,
+            jam_mulai,
+            jam_selesai,
+            venue,
+            date,
+            guest,
+            description,
+            syarat,
+            status,
+            picture: img.url,
+          },
+          {
+            where: {
+              id: eventId,
+            },
+          }
+        );
+      } else {
+        // jika tidak ada file yang diupload, perbarui data event tanpa mengubah gambar
+        await event.update(
+          {
+            event_name,
+            jam_mulai,
+            jam_selesai,
+            venue,
+            date,
+            guest,
+            description,
+            syarat,
+            status,
+          },
+          {
+            where: {
+              id: eventId,
+            },
+          }
+        );
+      }
+
+      // response
+      return res.status(200).json({
+        success: true,
+        message: "Edit Successfully",
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        success: false,
+        message: "Internal Server Error",
+        error: error.message,
+      });
     }
   }
 );
