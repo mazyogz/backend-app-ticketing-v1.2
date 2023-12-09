@@ -15,7 +15,7 @@ const upload = require('./middleware/Uploader');
 
 const { verifyToken, verifyAdmin } = require('./middleware/VerifyToken')
 const {getUsers, register, registerAdmin, login, loginAdmin, logout, editUsers, forgotPasswordOTP, resetPasswordOTP} = require('./controller/UserController')
-const {getAllEvent, getAllEventAdmin, getEventById, getEventByIdAdmin, createTicket, getTicket, getTicketById, editTicket} = require("./controller/EventController")
+const {getAllEvent, getAllEventAdmin, getEventById, getEventByIdAdmin, createTicket, getTicket, getTicketById, editTicket, deleteEventById, deleteTicket} = require("./controller/EventController")
 const prefix = '/v1/api/';
 
 // const db = require('./config/db.config'); //Connect to database railway
@@ -40,10 +40,12 @@ app.get(prefix + 'events/:eventId', getEventById);
 //EVENT ADMIN
 app.get(prefix + 'admin/events', verifyAdmin, getAllEventAdmin);
 app.get(prefix + 'admin/event/:eventId', verifyAdmin, getEventByIdAdmin);
+app.delete(prefix + 'admin/event/:eventId', verifyAdmin, deleteEventById);
 app.post(prefix + 'admin/event/:eventId/ticket', verifyAdmin, createTicket);
 app.get(prefix + 'admin/event/:eventId/ticket', verifyAdmin, getTicket);
 app.get(prefix + 'admin/event/:eventId/ticket/:ticketId', verifyAdmin, getTicketById);
 app.put(prefix + 'admin/event/:eventId/ticket/:ticketId', verifyAdmin, editTicket);
+app.delete(prefix + 'admin/event/:eventId/ticket/:ticketId', verifyAdmin, deleteTicket);
 
 app.post(
   prefix + "admin/create-event",
