@@ -1,5 +1,5 @@
-const { event } = require("../models");
-const { Op } = require("sequelize")
+const { event, ticket } = require("../models");
+const { Op, where } = require("sequelize")
 
 exports.getAllEvent = async (req, res) => {
   try {
@@ -94,3 +94,162 @@ exports.getEventByIdAdmin = async (req, res) => {
     console.log(error)
   }
 }
+
+exports.createTicket = async (req, res) => {
+  const { eventId } = req.params;
+  const { name, price, status } = req.body;
+
+  const ticketExisted = await ticket.findOne({
+    where: {
+      name: name,
+    },
+  });
+
+  if (ticketExisted) {
+    return res.status(400).json({
+      status: false,
+      msg: "Ticket already exists",
+    });
+  }
+
+  try {
+    let ticketData = await ticket.create({
+      id_event: eventId,
+      name: name,
+      price: price,
+      status: status,
+    })
+
+    res.status(200).json({
+      success: true,
+      message: `Ticket Data Event Id ${eventId} Successfully Added`,
+      data: ticketData,
+    });
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+exports.editTicket = async (req, res) => {
+  const { eventId, ticketId } = req.params;
+  const { name, price, status } = req.body;
+
+  try {
+    let ticketData = await ticket.update(
+      {
+        name: name,
+        price: price,
+        status: status,
+      },
+      {
+        where: {
+          id: ticketId,
+          id_event: eventId,
+        },
+      }
+    );
+
+    res.status(200).json({
+      success: true,
+      message: `Ticket Data Id ${ticketId} Event Id ${eventId} Successfully Updated`,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.getTicket = async (req, res) => {
+  const { eventId } = req.params;
+
+  try {
+    let ticketData = await ticket.findAll({
+      attributes: ["id","name","price","status"],
+      order: [
+        ['id', 'ASC']
+      ],
+      where: {
+        id_event: eventId,
+      },
+    })
+
+    let eventData = await event.findOne({
+      attributes: ["event_name"],
+      where: {
+        id: eventId,
+      }
+    })
+
+    if (!eventData) {
+      return res.status(404).json({
+        success: false,
+        message: `Event with ID ${eventId} not found`,
+        data: null,
+      });
+    }
+
+    let parameter = {
+      eventData,
+      ticketData
+    }
+
+    res.status(200).json({
+      success: true,
+      message: `Ticket Data Event Id ${eventId}`,
+      data: parameter,
+    });
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+exports.getTicketById = async (req, res) => {
+  const { eventId } = req.params;
+  const { ticketId } = req.params;
+  
+  try {
+    let eventData = await event.findOne({
+      attributes: ["event_name"],
+      where: {
+        id: eventId,
+      }
+    })
+    
+    if (!eventData) {
+      return res.status(404).json({
+        success: false,
+        message: `Event with ID ${eventId} not found`,
+        data: null,
+      });
+    }
+    
+    let ticketData = await ticket.findAll({
+      attributes: ["id","name","price","status"],
+      where: {
+        id_event: eventId,
+        id: ticketId,
+      },
+    })
+
+    if (!ticketData.length) {
+      return res.status(404).json({
+        success: false,
+        message: `No tickets found for Event ID ${eventId}`,
+        data: null,
+      });
+    }
+
+    let parameter = {
+      eventData,
+      ticketData
+    }
+
+    res.status(200).json({
+      success: true,
+      message: `Ticket Data Event Id ${eventId}, ticket Id ${ticketId}`,
+      data: parameter,
+    });
+  } catch (error) {
+    console.log(error)
+  }
+}
+
