@@ -30,10 +30,10 @@ module.exports = {
       otp: {
         type: Sequelize.STRING
       },
-      isVerified: {
+      is_verified: {
         type: Sequelize.BOOLEAN
       },
-      isUser: {
+      is_user: {
         type: Sequelize.STRING
       },
       createdAt: {

@@ -101,7 +101,7 @@ exports.registerAdmin = async (req, res) => {
       alamat: alamat,
       email: email,
       nomor_telepon: nomor_telepon,
-      isUser: "super-admin",
+      is_user: "super-admin",
     });
 
     userData = JSON.parse(JSON.stringify(userData));
