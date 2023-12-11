@@ -61,7 +61,7 @@ exports.register = async (req, res) => {
       alamat: alamat,
       email: email,
       nomor_telepon: nomor_telepon,
-      isUser: "common-user",
+      is_user: "common-user",
     });
 
     userData = JSON.parse(JSON.stringify(userData));
