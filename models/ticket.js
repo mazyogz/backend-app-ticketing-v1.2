@@ -2,6 +2,8 @@
 const {
   Model
 } = require('sequelize');
+const sequelize = require('../config/db.config'); // connect to database railway
+// const sequelize = require('../config/db.local.config'); // connect to database local
 module.exports = (sequelize, DataTypes) => {
   class ticket extends Model {
     /**

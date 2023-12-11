@@ -36,6 +36,9 @@ module.exports = {
       syarat: {
         type: Sequelize.TEXT
       },
+      qty: {
+        type: Sequelize.INTEGER
+      },
       status: {
         type: Sequelize.STRING
       },
