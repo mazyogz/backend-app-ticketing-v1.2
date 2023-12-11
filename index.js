@@ -18,8 +18,8 @@ const {getUsers, register, registerAdmin, login, loginAdmin, logout, editUsers, 
 const {getAllEvent, getAllEventAdmin, getEventById, getEventByIdAdmin, createTicket, getTicket, getTicketById, editTicket, deleteEventById, deleteTicket} = require("./controller/EventController")
 const prefix = '/v1/api/';
 
-const db = require('./config/db.config'); //Connect to database railway
-// const db = require('./config/db.local.config'); //Connect to database local
+// const db = require('./config/db.config'); //Connect to database railway
+const db = require('./config/db.local.config'); //Connect to database local
 
 // AUTH USER
 app.get(prefix + 'users', getUsers);
