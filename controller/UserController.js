@@ -365,7 +365,7 @@ exports.loginAdmin = async (req, res) => {
         .json({ success: false, message: "Login Failed" });
 
     const whoAmI = userData
-    if (whoAmI.isUser === "super-admin") {
+    if (whoAmI.is_user === "super-admin") {
       // Token generation
     let refreshTokens = [];
 
