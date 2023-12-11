@@ -13,7 +13,7 @@ exports.getUsers = async (req, res) => {
         "nama_lengkap",
         "alamat",
         "nomor_telepon",
-        "isUser",
+        "is_user",
       ],
       order: [["id", "ASC"]],
     });
