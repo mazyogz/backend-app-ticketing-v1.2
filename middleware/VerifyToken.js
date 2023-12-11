@@ -6,7 +6,7 @@ exports.verifyToken = (req, res, next) => {
   if (token != null && token != undefined) {
     token = token.split(' ')[1]; //Access token
 
-    jwt.verify(token, 'admin', async (err, user) => {
+    jwt.verify(token, 'access', async (err, user) => {
       if (user) {
         req.user = user;
         next();
