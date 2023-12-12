@@ -166,7 +166,7 @@ exports.createTicket = async (req, res) => {
     },
   });
 
-  const eventExisted = await ticket.findOne({
+  const eventExisted = await event.findOne({
     where: {
       id_event: eventId,
     },
