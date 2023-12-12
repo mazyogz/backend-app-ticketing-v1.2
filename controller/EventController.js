@@ -210,7 +210,7 @@ exports.editTicket = async (req, res) => {
 
   const ticketExisted = await ticket.findOne({
     where: {
-      id_event: ticketId,
+      id: ticketId,
     },
   });
 
