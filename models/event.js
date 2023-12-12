@@ -16,8 +16,8 @@ module.exports = () => {
   }
   event.init({
     event_name: DataTypes.STRING,
-    jam_mulai: DataTypes.TIME,
-    jam_selesai: DataTypes.TIME,
+    jam_mulai: DataTypes.STRING,
+    jam_selesai: DataTypes.STRING,
     venue: DataTypes.STRING,
     date: DataTypes.DATEONLY,
     picture: DataTypes.TEXT,

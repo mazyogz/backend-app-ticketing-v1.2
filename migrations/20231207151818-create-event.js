@@ -13,10 +13,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       jam_mulai: {
-        type: Sequelize.TIME
+        type: Sequelize.STRING
       },
       jam_selesai: {
-        type: Sequelize.TIME
+        type: Sequelize.STRING
       },
       venue: {
         type: Sequelize.STRING
