@@ -113,7 +113,7 @@ app.put(
   upload.single("image"),
   async (req, res) => {
     try {
-      const eventId = req.params.eventId;
+      const eventId = req.params;
 
       // request body => req.body.name
       const {
