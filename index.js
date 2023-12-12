@@ -179,6 +179,7 @@ app.put(
             description,
             syarat,
             status,
+            qty
           },
           {
             where: {
