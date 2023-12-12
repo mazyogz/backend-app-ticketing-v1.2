@@ -689,247 +689,6 @@
 					]
 				},
 				{
-					"name": "User Auth",
-					"item": [
-						{
-							"name": "local-register-user",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "username",
-											"value": "dev_2",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "88888888",
-											"type": "text"
-										},
-										{
-											"key": "nama_lengkap",
-											"value": "user_dev2",
-											"type": "text"
-										},
-										{
-											"key": "alamat",
-											"value": "alamat lengkap user dev 1",
-											"type": "text"
-										},
-										{
-											"key": "email",
-											"value": "supranatural345@gmail.com",
-											"type": "text"
-										},
-										{
-											"key": "nomor_telepon",
-											"value": "088888888888",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "http://localhost:5000/v1/api/register",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "5000",
-									"path": [
-										"v1",
-										"api",
-										"register"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "local-login",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "email",
-											"value": "supranatural345@gmail.com",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "88888888",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "http://localhost:5000/v1/api/login",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "5000",
-									"path": [
-										"v1",
-										"api",
-										"login"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "local-logout",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:5000/v1/api/logout",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "5000",
-									"path": [
-										"v1",
-										"api",
-										"logout"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "local-editUsers",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWlsLmNvbSIsIm5hbWFfbGVuZ2thcCI6ImFkbWluMV9lZGl0ZWQiLCJhbGFtYXQiOiJhZG1pbjFfZWRpdGVkIiwibm9tb3JfdGVsZXBvbiI6ImFkbWluMV9lZGl0ZWQiLCJpYXQiOjE3MDE5MjIxMjMsImV4cCI6MTcwMjAwODUyM30.s98dFhOEq6CpRFpqKkVr2ticjCPrlgsU4gciqU_QOIM",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "username",
-											"value": "admin1_edited",
-											"type": "text"
-										},
-										{
-											"key": "nama_lengkap",
-											"value": "admin1_edited",
-											"type": "text"
-										},
-										{
-											"key": "nomor_telepon",
-											"value": "admin1_edited",
-											"type": "text"
-										},
-										{
-											"key": "alamat",
-											"value": "admin1_edited",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "http://localhost:5000/v1/api/editusers",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "5000",
-									"path": [
-										"v1",
-										"api",
-										"editusers"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "local-forgotPassword",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "email",
-											"value": "supranatural345@gmail.com",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "http://localhost:5000/v1/api/forgot-password-otp",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "5000",
-									"path": [
-										"v1",
-										"api",
-										"forgot-password-otp"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "local-resetPassword",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "otp",
-											"value": "888351",
-											"type": "text"
-										},
-										{
-											"key": "newPassword",
-											"value": "11111111",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "http://localhost:5000/v1/api/reset-password-otp",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "5000",
-									"path": [
-										"v1",
-										"api",
-										"reset-password-otp"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
 					"name": "Landing Page",
 					"item": [
 						{
@@ -983,7 +742,7 @@
 			"name": "Production",
 			"item": [
 				{
-					"name": "admin",
+					"name": "Admin",
 					"item": [
 						{
 							"name": "Auth",
@@ -1185,7 +944,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xIiwiYWxhbWF0IjoiYWRtaW4xIiwibm9tb3JfdGVsZXBvbiI6IjA4ODg4ODg4ODg4OCIsImlhdCI6MTcwMjA5NjUzNiwiZXhwIjoxNzAyMTgyOTM2fQ.1EUx5SLYPagc1Vj_-KwrRnqjId6a3s-hCKuGl-3cbz8",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsIlNlY3JldElEIjoiOTAyMzE3NDc4NjEzOTA4NzkyNzgxMzg3MTg5MjM5ODEyMDM5ODEyOTA4MzkxMjczOTA4MTI5MDM4MTIzMTIzaGphc2RnODlhc3lkODlhc2RoajJxODlleTg5MnF5ZWprb3NhaGQ5MDgxcTIiLCJpYXQiOjE3MDIzODc2MzEsImV4cCI6MTcwMjQ3NDAzMX0.czULWjBi5Pd1BLTCWR9WueDsoO531SV_4svR42Vd2sA",
 													"type": "string"
 												}
 											]
@@ -1197,7 +956,7 @@
 											"formdata": [
 												{
 													"key": "event_name",
-													"value": "Event Ketiga",
+													"value": "JOYLAND JAKARTA 2023",
 													"contentType": "",
 													"type": "text"
 												},
@@ -1208,48 +967,55 @@
 												},
 												{
 													"key": "jam_selesai",
-													"value": "22:00",
+													"value": "21:00",
 													"type": "text"
 												},
 												{
 													"key": "venue",
-													"value": "Lapangan Rampal, Malang",
+													"value": "Nancy Coffee, Banten",
 													"type": "text"
 												},
 												{
 													"key": "date",
-													"value": "2023-12-12",
+													"value": "2021-12-14",
 													"type": "text"
 												},
 												{
 													"key": "image",
 													"type": "file",
-													"src": "/C:/Users/ASUS/OneDrive/Gambar/indf.png"
+													"src": "/C:/Users/WINDOWS10/OneDrive/Gambar/ss-app-symphony/Cuplikan layar 2023-12-12 202819.jpg"
 												},
 												{
 													"key": "guest",
-													"value": "Avenged Sevenfold, My Chemical Romance, Queen",
+													"value": "Reality Club",
 													"type": "text"
 												},
 												{
 													"key": "description",
-													"value": "Sejak pertama kali dihelat di tahun 2004, Rock in Solo terus berkembang menjadi salah satu festival musik keras terbesar di Indonesia yang ditunggu-tunggu penggemar musik keras dari seluruh penjuru negeri dan luar negeri.\n\nPerhelatan kesebelas akan digelar pada Minggu 10 Desember 2023 di Benteng Vastenburg Solo dengan menghadirkan beberapa band internasional dan nasional.\n\nJadilah bagian dari sejarah Rock in Solo. Karena sejarah belum selesai ditulis!\n\nSakjose!",
+													"value": "Reality Club Presents... 2112 NIGHT\n\n'2112 Night' is an intimate showcase by Reality Club, as an appreciation towards their biggest fans. 2021 Levi's® Music Project Winners, Guernica Club, will be opening the night's festivities.\n\nThe showcase will be held on 21 December 2021 at a secret place only disclosed to ticket purchasers.",
 													"type": "text"
 												},
 												{
 													"key": "syarat",
-													"value": "1. Memiliki nomor handphone dan alamat email aktif yang dapat dihubungi.\n\n2. Pembelian tiket maksimal sejumlah 3 (tiga) tiket per transaksi.\n\n3. Tiket dapat dipindah tangankan dengan syarat dan ketentuan berlaku.\n\n4. Pengunjung dengan usia 0-12 tahun/ dibawah tinggi 110cm (Anak) tidak diwajibkan membeli tiket.\n\n5. Pembeli tiket Rock In Solo Festival akan menerima tiket elektronik melalui email.",
+													"value": "18+\nBring Identity\nNo Food and Beverage from outside\nNo Drugs\nNo Harmful things\nNo pets\nNo Camera Professional",
+													"type": "text"
+												},
+												{
+													"key": "qty",
+													"value": "500",
 													"type": "text"
 												}
 											]
 										},
 										"url": {
-											"raw": "http://localhost:5000/v1/api/admin/create-event",
-											"protocol": "http",
+											"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/admin/create-event",
+											"protocol": "https",
 											"host": [
-												"localhost"
+												"backend-app-ticketing-v12-production",
+												"up",
+												"railway",
+												"app"
 											],
-											"port": "5000",
 											"path": [
 												"v1",
 												"api",
@@ -1268,7 +1034,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsImlhdCI6MTcwMjAxNjI0MywiZXhwIjoxNzAyMTAyNjQzfQ.wKKQ1fAWnZvhqmGYphAWmrE4aFpV_9BHVOsH4syjYVk",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsIlNlY3JldElEIjoiOTAyMzE3NDc4NjEzOTA4NzkyNzgxMzg3MTg5MjM5ODEyMDM5ODEyOTA4MzkxMjczOTA4MTI5MDM4MTIzMTIzaGphc2RnODlhc3lkODlhc2RoajJxODlleTg5MnF5ZWprb3NhaGQ5MDgxcTIiLCJpYXQiOjE3MDIzODc2MzEsImV4cCI6MTcwMjQ3NDAzMX0.czULWjBi5Pd1BLTCWR9WueDsoO531SV_4svR42Vd2sA",
 													"type": "string"
 												}
 											]
@@ -1276,17 +1042,11 @@
 										"method": "PUT",
 										"header": [],
 										"body": {
-											"mode": "formdata",
-											"formdata": [
-												{
-													"key": "eventId",
-													"value": "5",
-													"type": "text"
-												},
+											"mode": "urlencoded",
+											"urlencoded": [
 												{
 													"key": "event_name",
-													"value": "Klub Bogor Raya New Year Eve 2024 Edited (Hide)",
-													"contentType": "",
+													"value": "Reality Club - Updated",
 													"type": "text"
 												},
 												{
@@ -1296,38 +1056,37 @@
 												},
 												{
 													"key": "jam_selesai",
-													"value": "22:00",
+													"value": "21:00",
 													"type": "text"
 												},
 												{
 													"key": "venue",
-													"value": "Club Bogor Raya, Perumahan Jalan Danau Bogor Raya, Katulampa, Bogor City, West Java, Indonesia, North Bogor, Bogor, West Java, Indonesia",
+													"value": "Nancy Coffee, Banten",
 													"type": "text"
 												},
 												{
 													"key": "date",
-													"value": "2023-12-12",
+													"value": "2021-12-14",
 													"type": "text"
 												},
 												{
-													"key": "image",
-													"type": "file",
-													"src": "/C:/Users/WINDOWS10/OneDrive/Gambar/Cuplikan layar 2023-12-08 131934.jpg",
-													"disabled": true
-												},
-												{
 													"key": "guest",
-													"value": "Avenged Sevenfold, My Chemical Romance, Queen",
+													"value": "Reality Club",
 													"type": "text"
 												},
 												{
 													"key": "description",
-													"value": "Bogor Raya Club New Year Eve 2024 Carnival (Night Party) It is a celebration of New Year's Eve with several facilities and exciting activities including:\n\nall you can eat barbeque and grill\ngaming stations\nswimming pool activities\nlive music\nfire works\ndoor prizes\nApart from that, there is also a camping area for those who want to continue the New Year's Eve celebration with a campfire and watching their favorite film with their loved ones.",
+													"value": "Reality Club Presents... 2112 NIGHT\n\n'2112 Night' is an intimate showcase by Reality Club, as an appreciation towards their biggest fans. 2021 Levi's® Music Project Winners, Guernica Club, will be opening the night's festivities.\n\nThe showcase will be held on 21 December 2021 at a secret place only disclosed to ticket purchasers.",
 													"type": "text"
 												},
 												{
 													"key": "syarat",
-													"value": "adult only ok!",
+													"value": "18+\nBring Identity\nNo Food and Beverage from outside\nNo Drugs\nNo Harmful things\nNo pets\nNo Camera Professional",
+													"type": "text"
+												},
+												{
+													"key": "qty",
+													"value": "500",
 													"type": "text"
 												},
 												{
@@ -1338,17 +1097,19 @@
 											]
 										},
 										"url": {
-											"raw": "http://localhost:5000/v1/api/edit-event/5",
-											"protocol": "http",
+											"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/edit-event/3",
+											"protocol": "https",
 											"host": [
-												"localhost"
+												"backend-app-ticketing-v12-production",
+												"up",
+												"railway",
+												"app"
 											],
-											"port": "5000",
 											"path": [
 												"v1",
 												"api",
 												"edit-event",
-												"5"
+												"3"
 											]
 										}
 									},
@@ -1362,7 +1123,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xIiwiYWxhbWF0IjoiYWRtaW4xIiwibm9tb3JfdGVsZXBvbiI6IjA4ODg4ODg4ODg4OCIsImlhdCI6MTcwMjA5ODkxMywiZXhwIjoxNzAyMTg1MzEzfQ.mRU-nfFhwytSSLprjIHjhwHdZ_DH5envjNqmTZPd7-U",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsIlNlY3JldElEIjoiOTAyMzE3NDc4NjEzOTA4NzkyNzgxMzg3MTg5MjM5ODEyMDM5ODEyOTA4MzkxMjczOTA4MTI5MDM4MTIzMTIzaGphc2RnODlhc3lkODlhc2RoajJxODlleTg5MnF5ZWprb3NhaGQ5MDgxcTIiLCJpYXQiOjE3MDIzODc2MzEsImV4cCI6MTcwMjQ3NDAzMX0.czULWjBi5Pd1BLTCWR9WueDsoO531SV_4svR42Vd2sA",
 													"type": "string"
 												}
 											]
@@ -1370,12 +1131,14 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "http://localhost:5000/v1/api/admin/events",
-											"protocol": "http",
+											"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/admin/events",
+											"protocol": "https",
 											"host": [
-												"localhost"
+												"backend-app-ticketing-v12-production",
+												"up",
+												"railway",
+												"app"
 											],
-											"port": "5000",
 											"path": [
 												"v1",
 												"api",
@@ -1394,7 +1157,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xIiwiYWxhbWF0IjoiYWRtaW4xIiwibm9tb3JfdGVsZXBvbiI6IjA4ODg4ODg4ODg4OCIsImlhdCI6MTcwMjA5ODkxMywiZXhwIjoxNzAyMTg1MzEzfQ.mRU-nfFhwytSSLprjIHjhwHdZ_DH5envjNqmTZPd7-U",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsIlNlY3JldElEIjoiOTAyMzE3NDc4NjEzOTA4NzkyNzgxMzg3MTg5MjM5ODEyMDM5ODEyOTA4MzkxMjczOTA4MTI5MDM4MTIzMTIzaGphc2RnODlhc3lkODlhc2RoajJxODlleTg5MnF5ZWprb3NhaGQ5MDgxcTIiLCJpYXQiOjE3MDIzODc2MzEsImV4cCI6MTcwMjQ3NDAzMX0.czULWjBi5Pd1BLTCWR9WueDsoO531SV_4svR42Vd2sA",
 													"type": "string"
 												}
 											]
@@ -1402,18 +1165,20 @@
 										"method": "DELETE",
 										"header": [],
 										"url": {
-											"raw": "http://localhost:5000/v1/api/admin/event/3",
-											"protocol": "http",
+											"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/admin/event/1",
+											"protocol": "https",
 											"host": [
-												"localhost"
+												"backend-app-ticketing-v12-production",
+												"up",
+												"railway",
+												"app"
 											],
-											"port": "5000",
 											"path": [
 												"v1",
 												"api",
 												"admin",
 												"event",
-												"3"
+												"1"
 											]
 										}
 									},
@@ -1427,7 +1192,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xIiwiYWxhbWF0IjoiYWRtaW4xIiwibm9tb3JfdGVsZXBvbiI6IjA4ODg4ODg4ODg4OCIsImlhdCI6MTcwMjA5ODkxMywiZXhwIjoxNzAyMTg1MzEzfQ.mRU-nfFhwytSSLprjIHjhwHdZ_DH5envjNqmTZPd7-U",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsIlNlY3JldElEIjoiOTAyMzE3NDc4NjEzOTA4NzkyNzgxMzg3MTg5MjM5ODEyMDM5ODEyOTA4MzkxMjczOTA4MTI5MDM4MTIzMTIzaGphc2RnODlhc3lkODlhc2RoajJxODlleTg5MnF5ZWprb3NhaGQ5MDgxcTIiLCJpYXQiOjE3MDIzODc2MzEsImV4cCI6MTcwMjQ3NDAzMX0.czULWjBi5Pd1BLTCWR9WueDsoO531SV_4svR42Vd2sA",
 													"type": "string"
 												}
 											]
@@ -1435,12 +1200,14 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "http://localhost:5000/v1/api/admin/event/2",
-											"protocol": "http",
+											"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/admin/event/2",
+											"protocol": "https",
 											"host": [
-												"localhost"
+												"backend-app-ticketing-v12-production",
+												"up",
+												"railway",
+												"app"
 											],
-											"port": "5000",
 											"path": [
 												"v1",
 												"api",
@@ -1460,7 +1227,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xIiwiYWxhbWF0IjoiYWRtaW4xIiwibm9tb3JfdGVsZXBvbiI6IjA4ODg4ODg4ODg4OCIsImlhdCI6MTcwMjA5ODkxMywiZXhwIjoxNzAyMTg1MzEzfQ.mRU-nfFhwytSSLprjIHjhwHdZ_DH5envjNqmTZPd7-U",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsIlNlY3JldElEIjoiOTAyMzE3NDc4NjEzOTA4NzkyNzgxMzg3MTg5MjM5ODEyMDM5ODEyOTA4MzkxMjczOTA4MTI5MDM4MTIzMTIzaGphc2RnODlhc3lkODlhc2RoajJxODlleTg5MnF5ZWprb3NhaGQ5MDgxcTIiLCJpYXQiOjE3MDIzODc2MzEsImV4cCI6MTcwMjQ3NDAzMX0.czULWjBi5Pd1BLTCWR9WueDsoO531SV_4svR42Vd2sA",
 													"type": "string"
 												}
 											]
@@ -1472,34 +1239,36 @@
 											"urlencoded": [
 												{
 													"key": "name",
-													"value": "Presale 7",
+													"value": "Presale 2",
 													"type": "default"
 												},
 												{
 													"key": "price",
-													"value": "25000",
+													"value": "75000",
 													"type": "default"
 												},
 												{
 													"key": "status",
-													"value": "Sold Out",
+													"value": "Available",
 													"type": "default"
 												}
 											]
 										},
 										"url": {
-											"raw": "http://localhost:5000/v1/api/admin/event/3/ticket",
-											"protocol": "http",
+											"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/admin/event/2/ticket",
+											"protocol": "https",
 											"host": [
-												"localhost"
+												"backend-app-ticketing-v12-production",
+												"up",
+												"railway",
+												"app"
 											],
-											"port": "5000",
 											"path": [
 												"v1",
 												"api",
 												"admin",
 												"event",
-												"3",
+												"2",
 												"ticket"
 											]
 										}
@@ -1514,7 +1283,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xIiwiYWxhbWF0IjoiYWRtaW4xIiwibm9tb3JfdGVsZXBvbiI6IjA4ODg4ODg4ODg4OCIsImlhdCI6MTcwMjA5ODkxMywiZXhwIjoxNzAyMTg1MzEzfQ.mRU-nfFhwytSSLprjIHjhwHdZ_DH5envjNqmTZPd7-U",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsIlNlY3JldElEIjoiOTAyMzE3NDc4NjEzOTA4NzkyNzgxMzg3MTg5MjM5ODEyMDM5ODEyOTA4MzkxMjczOTA4MTI5MDM4MTIzMTIzaGphc2RnODlhc3lkODlhc2RoajJxODlleTg5MnF5ZWprb3NhaGQ5MDgxcTIiLCJpYXQiOjE3MDIzODc2MzEsImV4cCI6MTcwMjQ3NDAzMX0.czULWjBi5Pd1BLTCWR9WueDsoO531SV_4svR42Vd2sA",
 													"type": "string"
 												}
 											]
@@ -1522,18 +1291,20 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "http://localhost:5000/v1/api/admin/event/3/ticket",
-											"protocol": "http",
+											"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/admin/event/2/ticket",
+											"protocol": "https",
 											"host": [
-												"localhost"
+												"backend-app-ticketing-v12-production",
+												"up",
+												"railway",
+												"app"
 											],
-											"port": "5000",
 											"path": [
 												"v1",
 												"api",
 												"admin",
 												"event",
-												"3",
+												"2",
 												"ticket"
 											]
 										}
@@ -1548,7 +1319,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xIiwiYWxhbWF0IjoiYWRtaW4xIiwibm9tb3JfdGVsZXBvbiI6IjA4ODg4ODg4ODg4OCIsImlhdCI6MTcwMjA5ODkxMywiZXhwIjoxNzAyMTg1MzEzfQ.mRU-nfFhwytSSLprjIHjhwHdZ_DH5envjNqmTZPd7-U",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsIlNlY3JldElEIjoiOTAyMzE3NDc4NjEzOTA4NzkyNzgxMzg3MTg5MjM5ODEyMDM5ODEyOTA4MzkxMjczOTA4MTI5MDM4MTIzMTIzaGphc2RnODlhc3lkODlhc2RoajJxODlleTg5MnF5ZWprb3NhaGQ5MDgxcTIiLCJpYXQiOjE3MDIzODc2MzEsImV4cCI6MTcwMjQ3NDAzMX0.czULWjBi5Pd1BLTCWR9WueDsoO531SV_4svR42Vd2sA",
 													"type": "string"
 												}
 											]
@@ -1556,20 +1327,22 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "http://localhost:5000/v1/api/admin/event/3/ticket/7",
-											"protocol": "http",
+											"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/admin/event/2/ticket/1",
+											"protocol": "https",
 											"host": [
-												"localhost"
+												"backend-app-ticketing-v12-production",
+												"up",
+												"railway",
+												"app"
 											],
-											"port": "5000",
 											"path": [
 												"v1",
 												"api",
 												"admin",
 												"event",
-												"3",
+												"2",
 												"ticket",
-												"7"
+												"1"
 											]
 										}
 									},
@@ -1583,7 +1356,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xIiwiYWxhbWF0IjoiYWRtaW4xIiwibm9tb3JfdGVsZXBvbiI6IjA4ODg4ODg4ODg4OCIsImlhdCI6MTcwMjA5ODkxMywiZXhwIjoxNzAyMTg1MzEzfQ.mRU-nfFhwytSSLprjIHjhwHdZ_DH5envjNqmTZPd7-U",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsIlNlY3JldElEIjoiOTAyMzE3NDc4NjEzOTA4NzkyNzgxMzg3MTg5MjM5ODEyMDM5ODEyOTA4MzkxMjczOTA4MTI5MDM4MTIzMTIzaGphc2RnODlhc3lkODlhc2RoajJxODlleTg5MnF5ZWprb3NhaGQ5MDgxcTIiLCJpYXQiOjE3MDIzODc2MzEsImV4cCI6MTcwMjQ3NDAzMX0.czULWjBi5Pd1BLTCWR9WueDsoO531SV_4svR42Vd2sA",
 													"type": "string"
 												}
 											]
@@ -1591,20 +1364,22 @@
 										"method": "DELETE",
 										"header": [],
 										"url": {
-											"raw": "http://localhost:5000/v1/api/admin/event/3/ticket/7",
-											"protocol": "http",
+											"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/admin/event/2/ticket/3",
+											"protocol": "https",
 											"host": [
-												"localhost"
+												"backend-app-ticketing-v12-production",
+												"up",
+												"railway",
+												"app"
 											],
-											"port": "5000",
 											"path": [
 												"v1",
 												"api",
 												"admin",
 												"event",
-												"3",
+												"2",
 												"ticket",
-												"7"
+												"3"
 											]
 										}
 									},
@@ -1618,7 +1393,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xIiwiYWxhbWF0IjoiYWRtaW4xIiwibm9tb3JfdGVsZXBvbiI6IjA4ODg4ODg4ODg4OCIsImlhdCI6MTcwMjA5ODkxMywiZXhwIjoxNzAyMTg1MzEzfQ.mRU-nfFhwytSSLprjIHjhwHdZ_DH5envjNqmTZPd7-U",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsIlNlY3JldElEIjoiOTAyMzE3NDc4NjEzOTA4NzkyNzgxMzg3MTg5MjM5ODEyMDM5ODEyOTA4MzkxMjczOTA4MTI5MDM4MTIzMTIzaGphc2RnODlhc3lkODlhc2RoajJxODlleTg5MnF5ZWprb3NhaGQ5MDgxcTIiLCJpYXQiOjE3MDIzODc2MzEsImV4cCI6MTcwMjQ3NDAzMX0.czULWjBi5Pd1BLTCWR9WueDsoO531SV_4svR42Vd2sA",
 													"type": "string"
 												}
 											]
@@ -1630,36 +1405,38 @@
 											"urlencoded": [
 												{
 													"key": "name",
-													"value": "Paket Hemat",
-													"type": "default"
+													"value": "Presale 1 (Paket Couple)",
+													"type": "text"
 												},
 												{
 													"key": "price",
-													"value": "6000",
-													"type": "default"
+													"value": "55499",
+													"type": "text"
 												},
 												{
 													"key": "status",
-													"value": "Sold Out",
-													"type": "default"
+													"value": "Available",
+													"type": "text"
 												}
 											]
 										},
 										"url": {
-											"raw": "http://localhost:5000/v1/api/admin/event/7/ticket/1",
-											"protocol": "http",
+											"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/admin/event/2/ticket/2",
+											"protocol": "https",
 											"host": [
-												"localhost"
+												"backend-app-ticketing-v12-production",
+												"up",
+												"railway",
+												"app"
 											],
-											"port": "5000",
 											"path": [
 												"v1",
 												"api",
 												"admin",
 												"event",
-												"7",
+												"2",
 												"ticket",
-												"1"
+												"2"
 											]
 										}
 									},
@@ -1670,10 +1447,60 @@
 					]
 				},
 				{
+					"name": "Landing Page",
+					"item": [
+						{
+							"name": "Get Available Events",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/events",
+									"protocol": "https",
+									"host": [
+										"backend-app-ticketing-v12-production",
+										"up",
+										"railway",
+										"app"
+									],
+									"path": [
+										"v1",
+										"api",
+										"events"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Events by Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/v1/api/events/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"v1",
+										"api",
+										"events",
+										"5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "User Auth",
 					"item": [
 						{
-							"name": "local-register-user",
+							"name": "Register User",
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -1731,7 +1558,7 @@
 							"response": []
 						},
 						{
-							"name": "local-login",
+							"name": "Login",
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -1769,7 +1596,7 @@
 							"response": []
 						},
 						{
-							"name": "local-logout",
+							"name": "Logout",
 							"request": {
 								"method": "DELETE",
 								"header": [],
@@ -1792,7 +1619,7 @@
 							"response": []
 						},
 						{
-							"name": "local-editUsers",
+							"name": "Edit User",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -1850,7 +1677,7 @@
 							"response": []
 						},
 						{
-							"name": "local-forgotPassword",
+							"name": "Forgot Password",
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -1883,7 +1710,7 @@
 							"response": []
 						},
 						{
-							"name": "local-resetPassword",
+							"name": "Reset Password",
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -1915,54 +1742,6 @@
 										"v1",
 										"api",
 										"reset-password-otp"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Landing Page",
-					"item": [
-						{
-							"name": "Get Available Events",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:5000/v1/api/events",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "5000",
-									"path": [
-										"v1",
-										"api",
-										"events"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Events by Id",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:5000/v1/api/events/5",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "5000",
-									"path": [
-										"v1",
-										"api",
-										"events",
-										"5"
 									]
 								}
 							},
