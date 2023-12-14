@@ -300,7 +300,8 @@
 												{
 													"key": "eventId",
 													"value": "5",
-													"type": "text"
+													"type": "text",
+													"disabled": true
 												},
 												{
 													"key": "event_name",
@@ -381,7 +382,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xIiwiYWxhbWF0IjoiYWRtaW4xIiwibm9tb3JfdGVsZXBvbiI6IjA4ODg4ODg4ODg4OCIsImlhdCI6MTcwMjA5ODkxMywiZXhwIjoxNzAyMTg1MzEzfQ.mRU-nfFhwytSSLprjIHjhwHdZ_DH5envjNqmTZPd7-U",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJTZWNyZXRJRCI6IjkwMjMxNzQ3ODYxMzkwODc5Mjc4MTM4NzE4OTIzOTgxMjAzOTgxMjkwODM5MTI3MzkwODEyOTAzODEyMzEyM2hqYXNkZzg5YXN5ZDg5YXNkaGoycTg5ZXk4OTJxeWVqa29zYWhkOTA4MXEyIiwiaWF0IjoxNzAyNDc3NDQyLCJleHAiOjE3MDI1NjM4NDJ9.n4OMEv4-pc6s4Iz_sCEAxC7-pgefAfUMBsNxGJkvUho",
 													"type": "string"
 												}
 											]
@@ -479,7 +480,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xIiwiYWxhbWF0IjoiYWRtaW4xIiwibm9tb3JfdGVsZXBvbiI6IjA4ODg4ODg4ODg4OCIsImlhdCI6MTcwMjA5ODkxMywiZXhwIjoxNzAyMTg1MzEzfQ.mRU-nfFhwytSSLprjIHjhwHdZ_DH5envjNqmTZPd7-U",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJTZWNyZXRJRCI6IjkwMjMxNzQ3ODYxMzkwODc5Mjc4MTM4NzE4OTIzOTgxMjAzOTgxMjkwODM5MTI3MzkwODEyOTAzODEyMzEyM2hqYXNkZzg5YXN5ZDg5YXNkaGoycTg5ZXk4OTJxeWVqa29zYWhkOTA4MXEyIiwiaWF0IjoxNzAyNDc3NDQyLCJleHAiOjE3MDI1NjM4NDJ9.n4OMEv4-pc6s4Iz_sCEAxC7-pgefAfUMBsNxGJkvUho",
 													"type": "string"
 												}
 											]
@@ -491,7 +492,7 @@
 											"urlencoded": [
 												{
 													"key": "name",
-													"value": "Presale 7",
+													"value": "Presale 8",
 													"type": "default"
 												},
 												{
@@ -501,7 +502,7 @@
 												},
 												{
 													"key": "status",
-													"value": "Sold Out",
+													"value": "Available",
 													"type": "default"
 												}
 											]
@@ -567,7 +568,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xIiwiYWxhbWF0IjoiYWRtaW4xIiwibm9tb3JfdGVsZXBvbiI6IjA4ODg4ODg4ODg4OCIsImlhdCI6MTcwMjA5ODkxMywiZXhwIjoxNzAyMTg1MzEzfQ.mRU-nfFhwytSSLprjIHjhwHdZ_DH5envjNqmTZPd7-U",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJTZWNyZXRJRCI6IjkwMjMxNzQ3ODYxMzkwODc5Mjc4MTM4NzE4OTIzOTgxMjAzOTgxMjkwODM5MTI3MzkwODEyOTAzODEyMzEyM2hqYXNkZzg5YXN5ZDg5YXNkaGoycTg5ZXk4OTJxeWVqa29zYWhkOTA4MXEyIiwiaWF0IjoxNzAyNTM3NjI2LCJleHAiOjE3MDI2MjQwMjZ9.TFciDVN76tdj2cYxvwY3otpu3xX8Gc91tgwi_n36B-4",
 													"type": "string"
 												}
 											]
@@ -575,7 +576,7 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "http://localhost:5000/v1/api/admin/event/3/ticket/7",
+											"raw": "http://localhost:5000/v1/api/admin/event/3/ticket/2",
 											"protocol": "http",
 											"host": [
 												"localhost"
@@ -588,7 +589,7 @@
 												"event",
 												"3",
 												"ticket",
-												"7"
+												"2"
 											]
 										}
 									},
@@ -718,7 +719,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:5000/v1/api/events/5",
+									"raw": "http://localhost:5000/v1/api/events/",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -728,7 +729,340 @@
 										"v1",
 										"api",
 										"events",
-										"5"
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User Auth",
+					"item": [
+						{
+							"name": "Register User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "dev_2",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "88888888",
+											"type": "text"
+										},
+										{
+											"key": "nama_lengkap",
+											"value": "user_dev2",
+											"type": "text"
+										},
+										{
+											"key": "alamat",
+											"value": "alamat lengkap user dev 1",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "supranatural345@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "nomor_telepon",
+											"value": "088888888888",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:5000/v1/api/register",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"v1",
+										"api",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "supranatural345@gmal.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "88888888",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/v1/api/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"v1",
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5000/v1/api/logout",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"v1",
+										"api",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJpYXQiOjE3MDI1MzU2ODQsImV4cCI6MTcwMjYyMjA4NH0.JiGAh3uzAkZZWDvOOv4EnzsihxxMrVxml0xjIJ3mgYQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "user3_edited",
+											"type": "text"
+										},
+										{
+											"key": "nama_lengkap",
+											"value": "user3_edited",
+											"type": "text"
+										},
+										{
+											"key": "nomor_telepon",
+											"value": "user3_edited",
+											"type": "text"
+										},
+										{
+											"key": "alamat",
+											"value": "user3_edited",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:5000/v1/api/editusers",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"v1",
+										"api",
+										"editusers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Forgot Password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "supranatural345@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:5000/v1/api/forgot-password-otp",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"v1",
+										"api",
+										"forgot-password-otp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset Password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "otp",
+											"value": "318954",
+											"type": "text"
+										},
+										{
+											"key": "newPassword",
+											"value": "11111111",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:5000/v1/api/reset-password-otp",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"v1",
+										"api",
+										"reset-password-otp"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "Order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJpYXQiOjE3MDI1NjA5NjUsImV4cCI6MTcwMjY0NzM2NX0.DbYcNlxjUYGmo6Xn87CKwsJvL6MTcoZZ8V69HTeFuhE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userId",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/v1/api/order/3/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"v1",
+										"api",
+										"order",
+										"3",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Payment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJpYXQiOjE3MDI1NjA5NjUsImV4cCI6MTcwMjY0NzM2NX0.DbYcNlxjUYGmo6Xn87CKwsJvL6MTcoZZ8V69HTeFuhE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userId",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/v1/api/payment/d897552a-a842-4378-ba47-a0b3040f90c3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"v1",
+										"api",
+										"payment",
+										"d897552a-a842-4378-ba47-a0b3040f90c3"
 									]
 								}
 							},
@@ -1227,7 +1561,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsIlNlY3JldElEIjoiOTAyMzE3NDc4NjEzOTA4NzkyNzgxMzg3MTg5MjM5ODEyMDM5ODEyOTA4MzkxMjczOTA4MTI5MDM4MTIzMTIzaGphc2RnODlhc3lkODlhc2RoajJxODlleTg5MnF5ZWprb3NhaGQ5MDgxcTIiLCJpYXQiOjE3MDIzODc2MzEsImV4cCI6MTcwMjQ3NDAzMX0.czULWjBi5Pd1BLTCWR9WueDsoO531SV_4svR42Vd2sA",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsIlNlY3JldElEIjoiOTAyMzE3NDc4NjEzOTA4NzkyNzgxMzg3MTg5MjM5ODEyMDM5ODEyOTA4MzkxMjczOTA4MTI5MDM4MTIzMTIzaGphc2RnODlhc3lkODlhc2RoajJxODlleTg5MnF5ZWprb3NhaGQ5MDgxcTIiLCJpYXQiOjE3MDI0NzQ4NTEsImV4cCI6MTcwMjU2MTI1MX0.nDvzUc2o-fE-Fne-kd6vELQKlwqgS0GvkvTKMpoNY1o",
 													"type": "string"
 												}
 											]
@@ -1239,12 +1573,12 @@
 											"urlencoded": [
 												{
 													"key": "name",
-													"value": "Presale 2",
+													"value": "Presale 1",
 													"type": "default"
 												},
 												{
 													"key": "price",
-													"value": "75000",
+													"value": "100000",
 													"type": "default"
 												},
 												{
@@ -1255,7 +1589,7 @@
 											]
 										},
 										"url": {
-											"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/admin/event/2/ticket",
+											"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/admin/event/3/ticket",
 											"protocol": "https",
 											"host": [
 												"backend-app-ticketing-v12-production",
@@ -1268,7 +1602,7 @@
 												"api",
 												"admin",
 												"event",
-												"2",
+												"3",
 												"ticket"
 											]
 										}
@@ -1283,7 +1617,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsIlNlY3JldElEIjoiOTAyMzE3NDc4NjEzOTA4NzkyNzgxMzg3MTg5MjM5ODEyMDM5ODEyOTA4MzkxMjczOTA4MTI5MDM4MTIzMTIzaGphc2RnODlhc3lkODlhc2RoajJxODlleTg5MnF5ZWprb3NhaGQ5MDgxcTIiLCJpYXQiOjE3MDIzODc2MzEsImV4cCI6MTcwMjQ3NDAzMX0.czULWjBi5Pd1BLTCWR9WueDsoO531SV_4svR42Vd2sA",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsIlNlY3JldElEIjoiOTAyMzE3NDc4NjEzOTA4NzkyNzgxMzg3MTg5MjM5ODEyMDM5ODEyOTA4MzkxMjczOTA4MTI5MDM4MTIzMTIzaGphc2RnODlhc3lkODlhc2RoajJxODlleTg5MnF5ZWprb3NhaGQ5MDgxcTIiLCJpYXQiOjE3MDI0NzQ4NTEsImV4cCI6MTcwMjU2MTI1MX0.nDvzUc2o-fE-Fne-kd6vELQKlwqgS0GvkvTKMpoNY1o",
 													"type": "string"
 												}
 											]
@@ -1291,7 +1625,7 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/admin/event/2/ticket",
+											"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/admin/event/3/ticket",
 											"protocol": "https",
 											"host": [
 												"backend-app-ticketing-v12-production",
@@ -1304,7 +1638,7 @@
 												"api",
 												"admin",
 												"event",
-												"2",
+												"3",
 												"ticket"
 											]
 										}
@@ -1742,6 +2076,102 @@
 										"v1",
 										"api",
 										"reset-password-otp"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "Order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWlsLmNvbSIsIm5hbWFfbGVuZ2thcCI6InVzZXIzX2VkaXRlZCIsImFsYW1hdCI6InVzZXIzX2VkaXRlZCIsIm5vbW9yX3RlbGVwb24iOiJ1c2VyM19lZGl0ZWQiLCJpYXQiOjE3MDI1NjQzOTMsImV4cCI6MTcwMjY1MDc5M30.9eSEP-S6i6lhtpVBM_Ssudx7YxOa2L711BssTbiVBnQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userId",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/order/2/2",
+									"protocol": "https",
+									"host": [
+										"backend-app-ticketing-v12-production",
+										"up",
+										"railway",
+										"app"
+									],
+									"path": [
+										"v1",
+										"api",
+										"order",
+										"2",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Payment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWlsLmNvbSIsIm5hbWFfbGVuZ2thcCI6InVzZXIzX2VkaXRlZCIsImFsYW1hdCI6InVzZXIzX2VkaXRlZCIsIm5vbW9yX3RlbGVwb24iOiJ1c2VyM19lZGl0ZWQiLCJpYXQiOjE3MDI1NjUxNjUsImV4cCI6MTcwMjY1MTU2NX0.xlTijNGs4Cw4uElNLpzHnv9uF7kH3zGRDEyYepqF4L4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userId",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/payment/2ac00152-1b6d-4125-9201-8e4587e1de25",
+									"protocol": "https",
+									"host": [
+										"backend-app-ticketing-v12-production",
+										"up",
+										"railway",
+										"app"
+									],
+									"path": [
+										"v1",
+										"api",
+										"payment",
+										"2ac00152-1b6d-4125-9201-8e4587e1de25"
 									]
 								}
 							},
