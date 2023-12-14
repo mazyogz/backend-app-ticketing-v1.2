@@ -97,7 +97,7 @@ exports.payment = async (req, res) => {
     const parameter = {
       transaction_details: {
         order_id: uniqueId,
-        gross_amount: orderData.dataValues.gross,
+        gross_amount: Math.ceil(orderData.dataValues.gross),
       },
       customer_details: {
         first_name: userData.nama_lengkap,
