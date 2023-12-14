@@ -1,5 +1,5 @@
 'use strict';
-const { DataTypes, Model } = require('sequelize');
+const { DataTypes, Model} = require('sequelize');
 // const sequelize = require('../config/db.config'); // connect to database railway
 const sequelize = require('../config/db.local.config'); // connect to database local
 
@@ -16,8 +16,15 @@ module.exports = () => {
   }
   order.init({
     order_id_unik: DataTypes.STRING,
+    event_id:DataTypes.INTEGER,
+    ticket_id:DataTypes.INTEGER,
+    date_order:DataTypes.DATE,
+    time_order:DataTypes.STRING,
     gross: DataTypes.FLOAT,
-    token: DataTypes.STRING
+    token: DataTypes.STRING,
+    user_id: DataTypes.INTEGER,
+    qty: DataTypes.INTEGER,
+    status: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'order',

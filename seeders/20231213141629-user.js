@@ -12,7 +12,7 @@ module.exports = {
           password: await bcrypt.hash('88888888', 10), //setup with bcrypt encrypt
           nama_lengkap: "Supra",
           alamat: "Jatim",
-          email: "supranatural345@gmal.com",
+          email: "supranatural345@gmail.com",
           nomor_telepon: "088888888888",
           otp: null,
           is_verified: null,

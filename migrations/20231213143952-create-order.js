@@ -12,10 +12,31 @@ module.exports = {
       order_id_unik: {
         type: Sequelize.STRING
       },
-      gross: {
+      event_id: {
+        type: Sequelize.INTEGER
+      },
+      ticket_id: {
+        type: Sequelize.INTEGER
+      },
+      date_order: {
+        type: Sequelize.DATE
+      },
+      time_order: {
+        type: Sequelize.STRING
+      },
+      gross: { 
         type: Sequelize.FLOAT
       },
       token: {
+        type: Sequelize.STRING
+      },
+      user_id: {
+        type: Sequelize.STRING
+      },
+      qty: {
+        type: Sequelize.FLOAT
+      },
+      status: {
         type: Sequelize.STRING
       },
       createdAt: {
