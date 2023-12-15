@@ -125,27 +125,75 @@ exports.notificationsMidtransServer = async (req, res) => {
       clientKey: "SB-Mid-client-HV7aOKK1G2a7GXBn",
     });
 
-    const statusResponse = await apiClient.transaction.notification(req.body);
+    apiClient.transaction
+      .notification(notificationJson)
+      .then((statusResponse) => {
+        let orderId = statusResponse.order_id;
+        let transactionStatus = statusResponse.transaction_status;
+        let fraudStatus = statusResponse.fraud_status;
 
-    // Handle status pembayaran sesuai kebutuhan aplikasi Anda
-    const orderId = statusResponse.order_id;
-    const transactionStatus = statusResponse.transaction_status;
+        console.log(
+          `Transaction notification received. Order ID: ${orderId}. Transaction status: ${transactionStatus}. Fraud status: ${fraudStatus}`
+        );
 
-    console.log(`Received webhook for order ID: ${orderId}, transaction status: ${transactionStatus}`);
+        // Sample transactionStatus handling logic
 
-    // Implementasi logika Anda di sini untuk menangani status pembayaran
-
-    await order.update(
-      {
-        status:transactionStatus,
-      },
-      {
-        where: {
-          order_id_unik: orderId,
-        },
-      }
-    );
-    res.status(200).send('OK');
+        if (transactionStatus == "capture") {
+          if (fraudStatus == "accept") {
+            order.update(
+              {
+                status: transactionStatus,
+              },
+              {
+                where: {
+                  order_id_unik: orderId,
+                },
+              }
+            );
+            res.status(200).json({ message: "OK" });
+          }
+        } else if (transactionStatus == "settlement") {
+          order.update(
+            {
+              status: transactionStatus,
+            },
+            {
+              where: {
+                order_id_unik: orderId,
+              },
+            }
+          );
+          res.status(200).json({ message: "OK" });
+        } else if (
+          transactionStatus == "cancel" ||
+          transactionStatus == "deny" ||
+          transactionStatus == "expire"
+        ) {
+          order.update(
+            {
+              status: transactionStatus,
+            },
+            {
+              where: {
+                order_id_unik: orderId,
+              },
+            }
+          );
+          res.status(200).json({ message: "OK" });
+        } else if (transactionStatus == "pending") {
+          order.update(
+            {
+              status: transactionStatus,
+            },
+            {
+              where: {
+                order_id_unik: orderId,
+              },
+            }
+          );
+          res.status(200).json({ message: "OK" });
+        }
+      });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
