@@ -1,7 +1,8 @@
 const { v4: uuidv4 } = require("uuid");
-const { event, ticket, order } = require("../models");
+const { event, ticket, order, transactiondetail, user, invoice } = require("../models");
 const moment = require("moment");
 const midtransClient = require('midtrans-client');
+const nodemailer = require("nodemailer");
 
 
 exports.order = async (req, res) => {
@@ -120,6 +121,7 @@ exports.payment = async (req, res) => {
 }
 
 exports.notificationsMidtransServer = async (req, res) => {
+  const ticketInvoiceCode = uuidv4();
   try {
     const notificationJson = req.body;
 
@@ -132,8 +134,15 @@ exports.notificationsMidtransServer = async (req, res) => {
     apiClient.transaction
       .notification(notificationJson)
       .then((statusResponse) => {
-        let orderId = statusResponse.order_id;
+        let transaction_time = statusResponse.transaction_time;
         let transactionStatus = statusResponse.transaction_status;
+        let transaction_id = statusResponse.transaction_id;
+        let status_message = statusResponse.status_message;
+        let status_code = statusResponse.status_code;
+        let signature_key = statusResponse.signature_key;
+        let payment_type = statusResponse.payment_type;
+        let orderId = statusResponse.order_id;
+        let gross_amount = statusResponse.gross_amount;
         let fraudStatus = statusResponse.fraud_status;
 
         console.log(
@@ -154,6 +163,35 @@ exports.notificationsMidtransServer = async (req, res) => {
                 },
               }
             );
+            transactiondetail.create({
+              transaction_time: transaction_time,
+              transaction_status: transactionStatus,
+              transaction_id: transaction_id,
+              status_message: status_message,
+              status_code: status_code,
+              signature_key: signature_key,
+              payment_type: payment_type,
+              order_id: orderId,
+              gross_amount: gross_amount,
+              fraud_status: fraudStatus,
+            });
+
+            const findOrderDetail = order.findOne({
+              where: {
+                order_id_unik: orderId,
+              },
+            });
+            const findUserDetail = user.findOne({
+              where: {
+                id: findOrderDetail.dataValues.user_id,
+              },
+            });
+            const createInvoice = invoice.create({
+              nama_lengkap: findUserDetail.dataValues.nama_lengkap,
+              email: findUserDetail.dataValues.email,
+              invoice_code: ticketInvoiceCode,
+            });
+
             res.status(200).json({ message: "OK" });
           }
         } else if (transactionStatus == "settlement") {
@@ -167,6 +205,33 @@ exports.notificationsMidtransServer = async (req, res) => {
               },
             }
           );
+          transactiondetail.create({
+            transaction_time: transaction_time,
+            transaction_status: transactionStatus,
+            transaction_id: transaction_id,
+            status_message: status_message,
+            status_code: status_code,
+            signature_key: signature_key,
+            payment_type: payment_type,
+            order_id: orderId,
+            gross_amount: gross_amount,
+            fraud_status: fraudStatus,
+          });
+          const findOrderDetail = order.findOne({
+            where: {
+              order_id_unik: orderId,
+            },
+          });
+          const findUserDetail = user.findOne({
+            where: {
+              id: findOrderDetail.dataValues.user_id,
+            },
+          });
+          const createInvoice = invoice.create({
+            nama_lengkap: findUserDetail.dataValues.nama_lengkap,
+            email: findUserDetail.dataValues.email,
+            invoice_code: ticketInvoiceCode,
+          });
           res.status(200).json({ message: "OK" });
         } else if (
           transactionStatus == "cancel" ||
@@ -183,6 +248,18 @@ exports.notificationsMidtransServer = async (req, res) => {
               },
             }
           );
+          transactiondetail.create({
+            transaction_time: transaction_time,
+            transaction_status: transactionStatus,
+            transaction_id: transaction_id,
+            status_message: status_message,
+            status_code: status_code,
+            signature_key: signature_key,
+            payment_type: payment_type,
+            order_id: orderId,
+            gross_amount: gross_amount,
+            fraud_status: fraudStatus,
+          });
           res.status(200).json({ message: "OK" });
         } else if (transactionStatus == "pending") {
           order.update(
@@ -195,6 +272,18 @@ exports.notificationsMidtransServer = async (req, res) => {
               },
             }
           );
+          transactiondetail.create({
+            transaction_time: transaction_time,
+            transaction_status: transactionStatus,
+            transaction_id: transaction_id,
+            status_message: status_message,
+            status_code: status_code,
+            signature_key: signature_key,
+            payment_type: payment_type,
+            order_id: orderId,
+            gross_amount: gross_amount,
+            fraud_status: fraudStatus,
+          });
           res.status(200).json({ message: "OK" });
         }
       });
