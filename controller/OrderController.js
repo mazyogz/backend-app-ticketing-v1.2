@@ -175,23 +175,6 @@ exports.notificationsMidtransServer = async (req, res) => {
               gross_amount: gross_amount,
               fraud_status: fraudStatus,
             });
-
-            const findOrderDetail = order.findOne({
-              where: {
-                order_id_unik: orderId,
-              },
-            });
-            const findUserDetail = user.findOne({
-              where: {
-                id: findOrderDetail.dataValues.user_id,
-              },
-            });
-            const createInvoice = invoice.create({
-              nama_lengkap: findUserDetail.dataValues.nama_lengkap,
-              email: findUserDetail.dataValues.email,
-              invoice_code: ticketInvoiceCode,
-            });
-
             res.status(200).json({ message: "OK" });
           }
         } else if (transactionStatus == "settlement") {
@@ -216,21 +199,6 @@ exports.notificationsMidtransServer = async (req, res) => {
             order_id: orderId,
             gross_amount: gross_amount,
             fraud_status: fraudStatus,
-          });
-          const findOrderDetail = order.findOne({
-            where: {
-              order_id_unik: orderId,
-            },
-          });
-          const findUserDetail = user.findOne({
-            where: {
-              id: findOrderDetail.dataValues.user_id,
-            },
-          });
-          const createInvoice = invoice.create({
-            nama_lengkap: findUserDetail.dataValues.nama_lengkap,
-            email: findUserDetail.dataValues.email,
-            invoice_code: ticketInvoiceCode,
           });
           res.status(200).json({ message: "OK" });
         } else if (
