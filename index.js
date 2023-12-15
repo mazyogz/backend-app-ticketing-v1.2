@@ -207,7 +207,7 @@ app.put(
 // ORDER
 app.post(prefix + 'order/:event_id/:ticket_id', verifyToken, order);
 app.post(prefix + 'payment/:uniqueId', verifyToken, payment);
-app.post(prefix + 'payment/notifications', notificationsMidtransServer );
+app.post(prefix + 'notifications', notificationsMidtransServer );
 
 db.authenticate()
   .then(() => console.log('Database connected'))
