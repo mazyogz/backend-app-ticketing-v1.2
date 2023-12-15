@@ -53,6 +53,7 @@ exports.order = async (req, res) => {
 
     const orderData = {
       id: newOrder.id,
+      orderId:order_id_unik,
       nama: userData.nama_lengkap,
       email: userData.email,
       event_id: newOrder.event_id,
