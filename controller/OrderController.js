@@ -125,49 +125,27 @@ exports.notificationsMidtransServer = async (req, res) => {
       clientKey: "SB-Mid-client-HV7aOKK1G2a7GXBn",
     });
 
-    apiClient.transaction
-      .notification(notificationJson)
-      .then((statusResponse) => {
-        let orderId = statusResponse.order_id;
-        let transactionStatus = statusResponse.transaction_status;
-        let fraudStatus = statusResponse.fraud_status;
+    const statusResponse = await apiClient.transaction.notification(req.body);
 
-        console.log(
-          `Transaction notification received. Order ID: ${orderId}. Transaction status: ${transactionStatus}. Fraud status: ${fraudStatus}`
-        );
-        // Sample transactionStatus handling logic
+    // Handle status pembayaran sesuai kebutuhan aplikasi Anda
+    const orderId = statusResponse.order_id;
+    const transactionStatus = statusResponse.transaction_status;
 
-        if (transactionStatus == "capture") {
-          if (fraudStatus == "accept") {
-            // TODO set transaction status on your database to 'success'
-            res.status(200).json({ message: "OK" });
-          }
-        } else if (transactionStatus == "settlement") {
-          // TODO set transaction status on your database to 'success'
-          res.status(200).json({ message: "OK" });
-        } else if (
-          transactionStatus == "cancel" ||
-          transactionStatus == "deny" ||
-          transactionStatus == "expire"
-        ) {
-          // TODO set transaction status on your database to 'failure'
-          res.status(200).json({ message: "OK" });
-        } else if (transactionStatus == "pending") {
-          // TODO set transaction status on your database to 'pending' / waiting payment
-          res.status(200).json({ message: "OK" });
-        }
-      });
+    console.log(`Received webhook for order ID: ${orderId}, transaction status: ${transactionStatus}`);
 
-      const transactionUpdate = await order.update(
-        {
-          status:transactionStatus
+    // Implementasi logika Anda di sini untuk menangani status pembayaran
+
+    await order.update(
+      {
+        status:transactionStatus,
+      },
+      {
+        where: {
+          order_id_unik: orderId,
         },
-        {
-          where: {
-            order_id_unik: orderId,
-          },
-        }
-      );
+      }
+    );
+    res.status(200).send('OK');
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
