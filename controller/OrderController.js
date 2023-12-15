@@ -116,3 +116,59 @@ exports.payment = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 }
+
+exports.notificationsMidtransServer = async (req, res) => {
+  try {
+    let apiClient = new midtransClient.Snap({
+      isProduction: false,
+      serverKey: "SB-Mid-server-v4ZJdgQET4My17Ngk-pb6T1g",
+      clientKey: "SB-Mid-client-HV7aOKK1G2a7GXBn",
+    });
+
+    apiClient.transaction
+      .notification(notificationJson)
+      .then((statusResponse) => {
+        let orderId = statusResponse.order_id;
+        let transactionStatus = statusResponse.transaction_status;
+        let fraudStatus = statusResponse.fraud_status;
+
+        console.log(
+          `Transaction notification received. Order ID: ${orderId}. Transaction status: ${transactionStatus}. Fraud status: ${fraudStatus}`
+        );
+        // Sample transactionStatus handling logic
+
+        if (transactionStatus == "capture") {
+          if (fraudStatus == "accept") {
+            // TODO set transaction status on your database to 'success'
+            res.status(200).json({ message: "OK" });
+          }
+        } else if (transactionStatus == "settlement") {
+          // TODO set transaction status on your database to 'success'
+          res.status(200).json({ message: "OK" });
+        } else if (
+          transactionStatus == "cancel" ||
+          transactionStatus == "deny" ||
+          transactionStatus == "expire"
+        ) {
+          // TODO set transaction status on your database to 'failure'
+          res.status(200).json({ message: "OK" });
+        } else if (transactionStatus == "pending") {
+          // TODO set transaction status on your database to 'pending' / waiting payment
+          res.status(200).json({ message: "OK" });
+        }
+      });
+
+      const transactionUpdate = await order.update(
+        {
+          status:transactionStatus
+        },
+        {
+          where: {
+            order_id_unik: orderId,
+          },
+        }
+      );
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

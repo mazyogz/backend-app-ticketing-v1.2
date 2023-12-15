@@ -16,7 +16,7 @@ const upload = require('./middleware/Uploader');
 const { verifyToken, verifyAdmin } = require('./middleware/VerifyToken')
 const {getUsers, register, registerAdmin, login, loginAdmin, logout, editUsers, forgotPasswordOTP, resetPasswordOTP} = require('./controller/UserController')
 const {getAllEvent, getAllEventAdmin, getEventById, getEventByIdAdmin, createTicket, getTicket, getTicketById, editTicket, deleteEventById, deleteTicket} = require("./controller/EventController")
-const {order, payment} = require("./controller/OrderController")
+const {order, payment, notificationsMidtransServer} = require("./controller/OrderController")
 const prefix = '/v1/api/';
 
 // const db = require('./config/db.config'); //Connect to database railway
@@ -207,6 +207,7 @@ app.put(
 // ORDER
 app.post(prefix + 'order/:event_id/:ticket_id', verifyToken, order);
 app.post(prefix + 'payment/:uniqueId', verifyToken, payment);
+app.post(prefix + 'payment/notifications', notificationsMidtransServer );
 
 db.authenticate()
   .then(() => console.log('Database connected'))
