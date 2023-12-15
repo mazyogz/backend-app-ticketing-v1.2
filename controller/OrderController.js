@@ -119,6 +119,8 @@ exports.payment = async (req, res) => {
 
 exports.notificationsMidtransServer = async (req, res) => {
   try {
+    const notificationJson = req.body;
+    
     let apiClient = new midtransClient.Snap({
       isProduction: false,
       serverKey: "SB-Mid-server-v4ZJdgQET4My17Ngk-pb6T1g",
