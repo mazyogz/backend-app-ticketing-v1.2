@@ -47,7 +47,7 @@ exports.order = async (req, res) => {
       gross: ticket_data.dataValues.price + tax,
       qty: 1,
       date_order: new Date(),
-      time_order: moment().format("HH:mm:ss"),
+      time_order: moment().add(7, 'hours').format("HH:mm:ss") + ' WIB' ,
       status: "unpaid",
     });
 
