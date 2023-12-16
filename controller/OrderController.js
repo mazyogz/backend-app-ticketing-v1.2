@@ -298,8 +298,8 @@ exports.createInvoice = async (req, res) => {
     const invoiceId = generateRandomAlphaNumeric(11);
   
     // const qrCodeDataURL = await qrcode.toDataURL(invoiceId, { width: 300, height: 300 });
-    const qrCode = qrImage.image(invoiceId, { type: 'png', size: 10 }); // Atur ukuran di sini
-    const qrCodeDataURL = `data:image/png;base64,${qrCode.pipe(new require('stream').Writable()).toString('base64')}`;
+    const qrCodeBuffer = qrImage.image(invoiceId, { type: 'png', size: 10 }); // Atur ukuran di sini
+    const qrCodeDataURL =`data:image/png;base64,${qrCodeBuffer.toString('base64')}`;
 
     const orderData = await transactiondetail.findOne({
       where: {
