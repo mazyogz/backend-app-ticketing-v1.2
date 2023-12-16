@@ -9,6 +9,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      user_id: {
+        type: Sequelize.STRING
+      },
       nama_lengkap: {
         type: Sequelize.STRING
       },
@@ -16,6 +19,12 @@ module.exports = {
         type: Sequelize.STRING
       },
       invoice_code: {
+        type: Sequelize.STRING
+      },
+      order_id: {
+        type: Sequelize.STRING
+      },
+      is_generated: {
         type: Sequelize.STRING
       },
       createdAt: {

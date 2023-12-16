@@ -3,6 +3,7 @@ const { event, ticket, order, transactiondetail, user, invoice } = require("../m
 const moment = require("moment");
 const midtransClient = require('midtrans-client');
 const nodemailer = require("nodemailer");
+const qrcode = require("qrcode")
 
 
 exports.order = async (req, res) => {
@@ -257,5 +258,144 @@ exports.notificationsMidtransServer = async (req, res) => {
       });
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+};
+
+exports.createInvoice = async (req, res) => {
+  // const invoiceId = uuidv4();
+  const generateRandomAlphaNumeric = (length) => {
+    const alphanumericChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+  
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * alphanumericChars.length);
+      result += alphanumericChars.charAt(randomIndex);
+    }
+  
+    return result;
+  };
+  
+  // Contoh penggunaan untuk menghasilkan string alfanumerik 11 karakter
+  const invoiceId = generateRandomAlphaNumeric(11);
+
+  const qrCodeDataURL = await qrcode.toDataURL(invoiceId, { width: 300, height: 300 });
+
+  const { orderId } = req.params;
+  const userData = req.user;
+
+  try {
+    const isGeneratedInvoice = await invoice.findOne({
+      where: {
+        order_id: orderId,
+        is_generated: "true"
+      }
+    })
+
+    if (isGeneratedInvoice) {
+      return res.status(404).json({
+        success: false,
+        message: `Invoice already generated!`,
+      });
+    }
+
+    const orderData = await transactiondetail.findOne({
+      where: {
+        order_id: orderId,
+        transaction_status: "settlement" || "capture",
+        fraud_status: "accept"
+      },
+    });
+
+    if (!orderData) {
+      return res.status(404).json({
+        success: false,
+        message: `Transactions did not success or pending, please complete transactions!`,
+      });
+    }
+
+    const userVerificationsTransactions = await order.findOne({
+      user_id: userData.userId,
+      order_id_unik: orderId
+    })
+
+    if (!userVerificationsTransactions) {
+      return res.status(404).json({
+        success: false,
+        message: `Transactions did not found`,
+      });
+    }
+
+    const createInvoice = await invoice.create({
+      user_id: userData.userId,
+      nama_lengkap: userData.nama_lengkap,
+      email: userData.email,
+      invoice_code:invoiceId,
+      order_id: orderId,
+      is_generated: "true"
+    })
+
+    const responseData = {
+      userId: createInvoice.user_id,
+      nama_lengkap: createInvoice.nama_lengkap,
+      email: createInvoice.email,
+      invoice_code: createInvoice.invoice_code,
+      order_id: createInvoice.order_id,
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: "Gmail",
+      auth: {
+        user: "symphonyseatsofficial@gmail.com",
+        pass: "tvrj jgxx ifnf xfaj",
+      },
+    });
+
+    const htmlBody = `
+    <p>Hi ${createInvoice.nama_lengkap},</p>
+    <p>Your ticket details:</p>
+    <ul>
+      <li>Nama Lengkap: ${createInvoice.nama_lengkap}</li>
+      <li>Email: ${createInvoice.email}</li>
+      <li>Invoice Code: ${createInvoice.invoice_code}</li>
+      <li>Order ID: ${createInvoice.order_id}</li>
+    </ul>
+    <p>Ini adalah gambar barcode:</p><br/><img src="${qrCodeDataURL}" alt="Barcode"/>
+  `;
+
+    const mailOptions = {
+      from: "Symphony Seats Official",
+      to: responseData.email,
+      subject: "Your Ticket Was Ready!",
+      html:htmlBody,
+      attachments: [
+        {
+          filename: 'barcode.png',
+          content: qrCodeDataURL.split('base64,')[1],
+          encoding: 'base64'
+        }
+      ]
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+        return res
+          .status(500)
+          .json({ success: false, message: "Failed to send tickets" });
+      }
+      console.log("Email sent!:", info.response);
+    });
+
+    res.status(201).json({
+      status: true,
+      message: `Invoice Successfully Generated and sent to ${responseData.email} `,
+      data: responseData, 
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: "Terjadi kesalahan saat membuat pemesanan",
+      error: error.message,
+    });
   }
 };

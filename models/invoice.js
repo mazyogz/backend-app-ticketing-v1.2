@@ -15,9 +15,12 @@ module.exports = () => {
     }
   }
   invoice.init({
+    user_id: DataTypes.STRING,
     nama_lengkap: DataTypes.STRING,
     email: DataTypes.STRING,
-    invoice_code: DataTypes.STRING
+    invoice_code: DataTypes.STRING,
+    order_id: DataTypes.STRING,
+    is_generated: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'invoice',
