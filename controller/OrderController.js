@@ -3,7 +3,7 @@ const { event, ticket, order, transactiondetail, user, invoice } = require("../m
 const moment = require("moment");
 const midtransClient = require('midtrans-client');
 const nodemailer = require("nodemailer");
-const qrcode = require("qrcode")
+const qrImage = require("qr-image")
 
 
 exports.order = async (req, res) => {
@@ -278,25 +278,27 @@ exports.createInvoice = async (req, res) => {
   // Contoh penggunaan untuk menghasilkan string alfanumerik 11 karakter
   const invoiceId = generateRandomAlphaNumeric(11);
 
-  const qrCodeDataURL = await qrcode.toDataURL(invoiceId, { width: 300, height: 300 });
+  // const qrCodeDataURL = await qrcode.toDataURL(invoiceId, { width: 300, height: 300 });
+  const qrCodeBuffer = await qrImage.image(randomString, { type: 'png', size: 10 }); // Atur ukuran di sini
+  const qrCodeDataURL = `data:image/png;base64,${qrCodeBuffer.toString('base64')}`;
 
   const { orderId } = req.params;
   const userData = req.user;
 
   try {
-    const isGeneratedInvoice = await invoice.findOne({
-      where: {
-        order_id: orderId,
-        is_generated: "true"
-      }
-    })
+    // const isGeneratedInvoice = await invoice.findOne({
+    //   where: {
+    //     order_id: orderId,
+    //     is_generated: "true"
+    //   }
+    // })
 
-    if (isGeneratedInvoice) {
-      return res.status(404).json({
-        success: false,
-        message: `Invoice already generated!`,
-      });
-    }
+    // if (isGeneratedInvoice) {
+    //   return res.status(404).json({
+    //     success: false,
+    //     message: `Invoice already generated!`,
+    //   });
+    // }
 
     const orderData = await transactiondetail.findOne({
       where: {
