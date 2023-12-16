@@ -276,7 +276,7 @@ exports.createInvoice = async (req, res) => {
   };
   
   // Contoh penggunaan untuk menghasilkan string alfanumerik 11 karakter
-  const invoiceId = generateRandomAlphaNumeric(11);
+  const randomString = generateRandomAlphaNumeric(11);
 
   // const qrCodeDataURL = await qrcode.toDataURL(invoiceId, { width: 300, height: 300 });
   const qrCodeBuffer = await qrImage.image(randomString, { type: 'png', size: 10 }); // Atur ukuran di sini
