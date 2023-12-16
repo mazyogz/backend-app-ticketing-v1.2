@@ -19,8 +19,8 @@ const {getAllEvent, getAllEventAdmin, getEventById, getEventByIdAdmin, createTic
 const {order, payment, notificationsMidtransServer, createInvoice} = require("./controller/OrderController")
 const prefix = '/v1/api/';
 
-// const db = require('./config/db.config'); //Connect to database railway
-const db = require('./config/db.local.config'); //Connect to database local
+const db = require('./config/db.config'); //Connect to database railway
+// const db = require('./config/db.local.config'); //Connect to database local
 
 // AUTH USER
 app.get(prefix + 'users', getUsers);

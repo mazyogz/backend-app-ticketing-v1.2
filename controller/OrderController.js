@@ -3,7 +3,9 @@ const { event, ticket, order, transactiondetail, user, invoice } = require("../m
 const moment = require("moment");
 const midtransClient = require('midtrans-client');
 const nodemailer = require("nodemailer");
-const qrImage = require("qr-image")
+const qrImage = require("qr-image");
+const bwipjs = require("bwip-js")
+const qrcode = require("qrcode")
 
 
 exports.order = async (req, res) => {
@@ -262,8 +264,6 @@ exports.notificationsMidtransServer = async (req, res) => {
 };
 
 exports.createInvoice = async (req, res) => {
-  // const invoiceId = uuidv4();
- 
 
   const { orderId } = req.params;
   const userData = req.user;
@@ -294,13 +294,10 @@ exports.createInvoice = async (req, res) => {
       return result;
     };
     
-    // Contoh penggunaan untuk menghasilkan string alfanumerik 11 karakter
     const invoiceId = generateRandomAlphaNumeric(11);
   
-    // const qrCodeDataURL = await qrcode.toDataURL(invoiceId, { width: 300, height: 300 });
-    const qrCodeBuffer = qrImage.image(invoiceId, { type: 'png', size: 10 }); // Atur ukuran di sini
-    const qrCodeDataURL =`data:image/png;base64,${qrCodeBuffer.toString('base64')}`;
-
+    const qrCodeDataURL = await qrcode.toDataURL(invoiceId, { width: 600, height: 600 });
+    
     const orderData = await transactiondetail.findOne({
       where: {
         order_id: orderId,
@@ -317,7 +314,7 @@ exports.createInvoice = async (req, res) => {
     }
 
     const userVerificationsTransactions = await order.findOne({
-      where: { user_id: userData.userId, order_id_unik: orderId },
+       user_id: userData.userId, order_id_unik: orderId ,
     });
 
     if (!userVerificationsTransactions) {
