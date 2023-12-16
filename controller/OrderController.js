@@ -263,24 +263,7 @@ exports.notificationsMidtransServer = async (req, res) => {
 
 exports.createInvoice = async (req, res) => {
   // const invoiceId = uuidv4();
-  const generateRandomAlphaNumeric = (length) => {
-    const alphanumericChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-  
-    for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * alphanumericChars.length);
-      result += alphanumericChars.charAt(randomIndex);
-    }
-  
-    return result;
-  };
-  
-  // Contoh penggunaan untuk menghasilkan string alfanumerik 11 karakter
-  const invoiceId = generateRandomAlphaNumeric(11);
-
-  // const qrCodeDataURL = await qrcode.toDataURL(invoiceId, { width: 300, height: 300 });
-  const qrCodeBuffer = await qrImage.image(invoiceId, { type: 'png', size: 10 }); // Atur ukuran di sini
-  const qrCodeDataURL = `data:image/png;base64,${qrCodeBuffer.toString('base64')}`;
+ 
 
   const { orderId } = req.params;
   const userData = req.user;
@@ -299,6 +282,24 @@ exports.createInvoice = async (req, res) => {
     //     message: `Invoice already generated!`,
     //   });
     // }
+    const generateRandomAlphaNumeric = (length) => {
+      const alphanumericChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let result = '';
+    
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * alphanumericChars.length);
+        result += alphanumericChars.charAt(randomIndex);
+      }
+    
+      return result;
+    };
+    
+    // Contoh penggunaan untuk menghasilkan string alfanumerik 11 karakter
+    const invoiceId = generateRandomAlphaNumeric(11);
+  
+    // const qrCodeDataURL = await qrcode.toDataURL(invoiceId, { width: 300, height: 300 });
+    const qrCodeBuffer = await qrImage.image(invoiceId, { type: 'png', size: 10 }); // Atur ukuran di sini
+    const qrCodeDataURL = await `data:image/png;base64,${qrCodeBuffer.toString('base64')}`;
 
     const orderData = await transactiondetail.findOne({
       where: {
@@ -369,6 +370,7 @@ exports.createInvoice = async (req, res) => {
       to: responseData.email,
       subject: "Your Ticket Was Ready!",
       html:htmlBody,
+      attachDataUrls: true,
       attachments: [
         {
           filename: 'barcode.png',
