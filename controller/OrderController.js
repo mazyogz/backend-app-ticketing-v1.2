@@ -267,21 +267,85 @@ exports.createInvoice = async (req, res) => {
 
   const { orderId } = req.params;
   const userData = req.user;
+  const userIdAsInteger = parseInt(userData.userId, 10);
 
   try {
-    // const isGeneratedInvoice = await invoice.findOne({
-    //   where: {
-    //     order_id: orderId,
-    //     is_generated: "true"
-    //   }
-    // })
+    const isGeneratedInvoice = await invoice.findOne({
+      where: {
+        order_id: orderId,
+        is_generated: "true"
+      }
+    })
 
-    // if (isGeneratedInvoice) {
-    //   return res.status(404).json({
-    //     success: false,
-    //     message: `Invoice already generated!`,
-    //   });
-    // }
+    if (isGeneratedInvoice) {
+      const createInvoice = await invoice.create({
+        user_id: userData.userId,
+        nama_lengkap: userData.nama_lengkap,
+        email: userData.email,
+        invoice_code:invoiceId,
+        order_id: orderId,
+        is_generated: "true"
+      })
+  
+      const responseData = {
+        userId: createInvoice.user_id,
+        nama_lengkap: createInvoice.nama_lengkap,
+        email: createInvoice.email,
+        invoice_code: createInvoice.invoice_code,
+        order_id: createInvoice.order_id,
+      }
+  
+      const transporter = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+          user: "symphonyseatsofficial@gmail.com",
+          pass: "tvrj jgxx ifnf xfaj",
+        },
+      });
+  
+      const htmlBody = `
+      <p>Hi ${createInvoice.nama_lengkap},</p>
+      <p>Your ticket details:</p>
+      <ul>
+        <li>Nama Lengkap: ${createInvoice.nama_lengkap}</li>
+        <li>Email: ${createInvoice.email}</li>
+        <li>Invoice Code: ${createInvoice.invoice_code}</li>
+        <li>Order ID: ${createInvoice.order_id}</li>
+      </ul>
+      <p>Ini adalah gambar barcode:</p><br/><img src="${qrCodeDataURL}" alt="Barcode"/>
+    `;
+  
+      const mailOptions = {
+        from: "Symphony Seats Official",
+        to: responseData.email,
+        subject: "Your Ticket Was Ready!",
+        html:htmlBody,
+        attachDataUrls: true,
+        attachments: [
+          {
+            filename: 'barcode.png',
+            content: qrCodeDataURL.split('base64,')[1],
+            encoding: 'base64'
+          }
+        ]
+      };
+  
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.log(error);
+          return res
+            .status(500)
+            .json({ success: false, message: "Failed to send tickets" });
+        }
+        console.log("Email sent!:", info.response);
+      });
+  
+      res.status(201).json({
+        status: true,
+        message: `Invoice Successfully Generated and sent to ${responseData.email} `,
+        data: responseData, 
+      });
+    }
     const generateRandomAlphaNumeric = (length) => {
       const alphanumericChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
       let result = '';
@@ -314,7 +378,7 @@ exports.createInvoice = async (req, res) => {
     }
 
     const userVerificationsTransactions = await order.findOne({
-       user_id: userData.userId, order_id_unik: orderId ,
+       user_id: userIdAsInteger, order_id_unik: orderId ,
     });
 
     if (!userVerificationsTransactions) {
