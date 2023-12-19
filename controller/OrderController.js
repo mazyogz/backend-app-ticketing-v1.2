@@ -303,7 +303,9 @@ exports.createInvoice = async (req, res) => {
     }
 
     const userVerificationsTransactions = await order.findOne({
-      user_id: userIdAsInteger, order_id_unik: orderId ,
+      where: {
+        user_id: userIdAsInteger, order_id_unik: orderId ,
+      }
     });
 
     if (!userVerificationsTransactions) {
