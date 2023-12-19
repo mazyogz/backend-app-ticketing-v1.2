@@ -270,6 +270,19 @@ exports.createInvoice = async (req, res) => {
   const userIdAsInteger = parseInt(userData.userId, 10);
 
   try {
+
+    const isGeneratedInvoice = await invoice.findOne({
+        where: {
+          order_id: orderId,
+          is_generated: "true"
+        }
+      })
+      if (isGeneratedInvoice) {
+        return res.status(404).json({
+          success: false,
+          message: `Invoice already generated!`,
+        });
+      }
     
     const generateRandomAlphaNumeric = (length) => {
       const alphanumericChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
