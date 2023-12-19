@@ -409,11 +409,12 @@ exports.resendInvoice = async (req, res) => {
 
   const { orderId } = req.params;
   const userData = req.user;
+  const userIdAsInteger = parseInt(userData.userId, 10);
 
   try {
     const isExistedInvoice = await invoice.findOne({
       where: {
-        user_id: userData.userId,
+        user_id: userIdAsInteger,
         is_generated: "true",
         is_email_sent: "true",
         order_id: orderId
