@@ -446,7 +446,7 @@ exports.resendInvoice = async (req, res) => {
   
       const mailOptions = {
         from: "Symphony Seats Official",
-        to: responseData.email,
+        to: isExistedInvoice.email,
         subject: "Your Ticket Was Ready!",
         html:htmlBody,
         attachDataUrls: true,
