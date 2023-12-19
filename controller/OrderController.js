@@ -391,3 +391,81 @@ exports.createInvoice = async (req, res) => {
     });
   }
 };
+
+exports.resendInvoice = async (req, res) => {
+
+  const { orderId } = req.params;
+  const userData = req.user;
+
+  try {
+    const isExistedInvoice = await invoice.findOne({
+      where: {
+        user_id: userData.userId,
+        is_generated: "true",
+        is_email_sent: "true",
+        order_id: orderId
+      }
+    })
+
+    if (isExistedInvoice) {
+      const transporter = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+          user: "symphonyseatsofficial@gmail.com",
+          pass: "tvrj jgxx ifnf xfaj",
+        },
+      });
+
+      const qrCodeDataURL = await qrcode.toDataURL(isExistedInvoice.invoice_code, { width: 600, height: 600 });
+  
+      const htmlBody = `
+      <p>Hi ${isExistedInvoice.nama_lengkap},</p>
+      <p>Your ticket details:</p>
+      <ul>
+        <li>Nama Lengkap: ${isExistedInvoice.nama_lengkap}</li>
+        <li>Email: ${isExistedInvoice.email}</li>
+        <li>Invoice Code: ${isExistedInvoice.invoice_code}</li>
+        <li>Order ID: ${isExistedInvoice.order_id}</li>
+      </ul>
+      <p>Ini adalah gambar barcode:</p><br/><img src="${qrCodeDataURL}" alt="Barcode"/>
+    `;
+  
+      const mailOptions = {
+        from: "Symphony Seats Official",
+        to: responseData.email,
+        subject: "Your Ticket Was Ready!",
+        html:htmlBody,
+        attachDataUrls: true,
+        attachments: [
+          {
+            filename: 'barcode.png',
+            content: qrCodeDataURL.split('base64,')[1],
+            encoding: 'base64'
+          }
+        ]
+      };
+  
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.log(error);
+          return res
+            .status(500)
+            .json({ success: false, message: "Failed to send tickets" });
+        }
+        console.log("Email sent!:", info.response);
+      });
+  
+      res.status(201).json({
+        status: true,
+        message: `Invoice Successfully Generated and sent to ${isExistedInvoice.email} `,
+        data: isExistedInvoice, 
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: "Terjadi kesalahan saat membuat pemesanan",
+      error: error.message,
+    });
+  }
+};
