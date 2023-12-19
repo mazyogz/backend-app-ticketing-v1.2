@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "45ef5418-1d76-48bf-bf14-cc46d5197274",
+		"_postman_id": "79d5869f-e81c-4fea-b795-e2504a7ae083",
 		"name": "App-ticketing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25191103"
@@ -1910,12 +1910,12 @@
 									"urlencoded": [
 										{
 											"key": "email",
-											"value": "yogiprass33@gmail.com",
+											"value": "supranatural345@gmail.com",
 											"type": "text"
 										},
 										{
 											"key": "password",
-											"value": "88888888",
+											"value": "11111111",
 											"type": "text"
 										}
 									]
@@ -2103,7 +2103,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImVtYWlsIjoieW9naXByYXNzMzNAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiQXJpIFlvZ2kiLCJhbGFtYXQiOiJhbGFtYXQgQXJpIiwibm9tb3JfdGVsZXBvbiI6IjA4ODg4ODg4ODg4OCIsImlhdCI6MTcwMjYzNTI2MiwiZXhwIjoxNzAyNzIxNjYyfQ.ieOZXrSbgY2SJOHvhkyj9ql0BTpxKUP8zjOmAAHLq-c",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWlsLmNvbSIsIm5hbWFfbGVuZ2thcCI6InVzZXIzX2VkaXRlZCIsImFsYW1hdCI6InVzZXIzX2VkaXRlZCIsIm5vbW9yX3RlbGVwb24iOiJ1c2VyM19lZGl0ZWQiLCJpYXQiOjE3MDI5ODAyMzUsImV4cCI6MTcwMzA2NjYzNX0.epR2ekhLDlagna5mEn2KWnjBkId10oXL9akRAOgGeh0",
 											"type": "string"
 										}
 									]
@@ -2149,7 +2149,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWlsLmNvbSIsIm5hbWFfbGVuZ2thcCI6InVzZXIzX2VkaXRlZCIsImFsYW1hdCI6InVzZXIzX2VkaXRlZCIsIm5vbW9yX3RlbGVwb24iOiJ1c2VyM19lZGl0ZWQiLCJpYXQiOjE3MDI1NjUxNjUsImV4cCI6MTcwMjY1MTU2NX0.xlTijNGs4Cw4uElNLpzHnv9uF7kH3zGRDEyYepqF4L4",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWlsLmNvbSIsIm5hbWFfbGVuZ2thcCI6InVzZXIzX2VkaXRlZCIsImFsYW1hdCI6InVzZXIzX2VkaXRlZCIsIm5vbW9yX3RlbGVwb24iOiJ1c2VyM19lZGl0ZWQiLCJpYXQiOjE3MDI5ODAyMzUsImV4cCI6MTcwMzA2NjYzNX0.epR2ekhLDlagna5mEn2KWnjBkId10oXL9akRAOgGeh0",
 											"type": "string"
 										}
 									]
@@ -2168,7 +2168,7 @@
 									]
 								},
 								"url": {
-									"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/payment/70d6a77f-d748-4a8f-b928-f5c212bfff92",
+									"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/payment/5d5f072e-6fef-4e53-b189-a5687c1c8a0c",
 									"protocol": "https",
 									"host": [
 										"backend-app-ticketing-v12-production",
@@ -2180,7 +2180,98 @@
 										"v1",
 										"api",
 										"payment",
-										"70d6a77f-d748-4a8f-b928-f5c212bfff92"
+										"5d5f072e-6fef-4e53-b189-a5687c1c8a0c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invoice",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWlsLmNvbSIsIm5hbWFfbGVuZ2thcCI6InVzZXIzX2VkaXRlZCIsImFsYW1hdCI6InVzZXIzX2VkaXRlZCIsIm5vbW9yX3RlbGVwb24iOiJ1c2VyM19lZGl0ZWQiLCJpYXQiOjE3MDI5ODAyMzUsImV4cCI6MTcwMzA2NjYzNX0.epR2ekhLDlagna5mEn2KWnjBkId10oXL9akRAOgGeh0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userId",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/invoice/5d5f072e-6fef-4e53-b189-a5687c1c8a0c",
+									"protocol": "https",
+									"host": [
+										"backend-app-ticketing-v12-production",
+										"up",
+										"railway",
+										"app"
+									],
+									"path": [
+										"v1",
+										"api",
+										"invoice",
+										"5d5f072e-6fef-4e53-b189-a5687c1c8a0c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Resend Invoice",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWlsLmNvbSIsIm5hbWFfbGVuZ2thcCI6InVzZXIzX2VkaXRlZCIsImFsYW1hdCI6InVzZXIzX2VkaXRlZCIsIm5vbW9yX3RlbGVwb24iOiJ1c2VyM19lZGl0ZWQiLCJpYXQiOjE3MDI5ODAyMzUsImV4cCI6MTcwMzA2NjYzNX0.epR2ekhLDlagna5mEn2KWnjBkId10oXL9akRAOgGeh0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userId",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/invoice/5d5f072e-6fef-4e53-b189-a5687c1c8a0c/resend",
+									"protocol": "https",
+									"host": [
+										"backend-app-ticketing-v12-production",
+										"up",
+										"railway",
+										"app"
+									],
+									"path": [
+										"v1",
+										"api",
+										"invoice",
+										"5d5f072e-6fef-4e53-b189-a5687c1c8a0c",
+										"resend"
 									]
 								}
 							},
