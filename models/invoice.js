@@ -21,6 +21,7 @@ module.exports = () => {
     invoice_code: DataTypes.STRING,
     order_id: DataTypes.STRING,
     is_generated: DataTypes.STRING,
+    is_email_sent: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'invoice',

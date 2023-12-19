@@ -27,6 +27,9 @@ module.exports = {
       is_generated: {
         type: Sequelize.STRING
       },
+      is_email_sent: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
