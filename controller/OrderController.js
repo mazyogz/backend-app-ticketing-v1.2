@@ -483,3 +483,22 @@ exports.resendInvoice = async (req, res) => {
     });
   }
 };
+
+exports.getAllInvoice = async (req, res) => {
+  try {
+    const invoiceData = await invoice.findAll({
+      order: [["id", "ASC"]],
+    });
+    res.status(200).json({
+      success: true,
+      message: "List All Invoice Data",
+      data: invoiceData,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: "Terjadi kesalahan saat membuat pemesanan",
+      error: error.message,
+    });
+  }
+}
