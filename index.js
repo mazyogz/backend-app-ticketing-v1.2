@@ -16,7 +16,7 @@ const upload = require('./middleware/Uploader');
 const { verifyToken, verifyAdmin } = require('./middleware/VerifyToken')
 const {getUsers, register, registerAdmin, login, loginAdmin, logout, editUsers, forgotPasswordOTP, resetPasswordOTP} = require('./controller/UserController')
 const {getAllEvent, getAllEventAdmin, getEventById, getEventByIdAdmin, createTicket, getTicket, getTicketById, editTicket, deleteEventById, deleteTicket} = require("./controller/EventController")
-const {order, payment, notificationsMidtransServer, createInvoice, resendInvoice, getAllInvoice} = require("./controller/OrderController")
+const {order, payment, notificationsMidtransServer, createInvoice, resendInvoice, getAllInvoice, getAllUserOrder, getUserOrderByIdOrder} = require("./controller/OrderController")
 const prefix = '/v1/api/';
 
 const db = require('./config/db.config'); //Connect to database railway
@@ -210,6 +210,8 @@ app.post(prefix + 'payment/:uniqueId', verifyToken, payment);
 app.post(prefix + 'notifications', notificationsMidtransServer );
 app.post(prefix + 'invoice/:orderId', verifyToken, createInvoice );
 app.post(prefix + 'invoice/:orderId/resend', verifyToken, resendInvoice );
+app.get(prefix + 'order-all', verifyToken, getAllUserOrder );
+app.get(prefix + 'order-all/:orderId', verifyToken, getUserOrderByIdOrder );
 
 // INVOICE ADMIN
 app.get(prefix + 'admin/invoice', verifyAdmin, getAllInvoice );

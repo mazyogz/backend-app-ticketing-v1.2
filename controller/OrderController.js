@@ -3,7 +3,7 @@ const { event, ticket, order, transactiondetail, user, invoice } = require("../m
 const moment = require("moment");
 const midtransClient = require('midtrans-client');
 const nodemailer = require("nodemailer");
-const qrImage = require("qr-image");
+// const qrImage = require("qr-image");
 const bwipjs = require("bwip-js")
 const qrcode = require("qrcode")
 
@@ -502,3 +502,68 @@ exports.getAllInvoice = async (req, res) => {
     });
   }
 }
+
+exports.getAllUserOrder = async (req, res) => {
+  const userData = req.user;
+  const userIdAsStr = userData.userId.toString();
+
+  try {
+    const allOrderData = await order.findAll({
+      where: {
+        user_id: userIdAsStr,
+      },
+    });
+
+    if (allOrderData.length === 0) {
+      res.status(404).json({
+        status: false,
+        message: "No data found for the specified user and order ID",
+      });
+    } else {
+      res.status(201).json({
+        status: true,
+        message: "Order Data",
+        data: allOrderData,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: "Terjadi kesalahan saat membuat pemesanan",
+      error: error.message,
+    });
+  }
+};
+exports.getUserOrderByIdOrder = async (req, res) => {
+  const userData = req.user;
+  const userIdAsStr = userData.userId.toString();
+  const { orderId } = req.params;
+
+  try {
+    const allOrderData = await order.findAll({
+      where: {
+        user_id: userIdAsStr,
+        order_id_unik: orderId,
+      },
+    });
+
+    if (allOrderData.length === 0) {
+      res.status(404).json({
+        status: false,
+        message: "No data found for the specified user and order ID",
+      });
+    } else {
+      res.status(201).json({
+        status: true,
+        message: "Order Data",
+        data: allOrderData,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: "Terjadi kesalahan saat membuat pemesanan",
+      error: error.message,
+    });
+  }
+};

@@ -1067,6 +1067,69 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "All User Order by User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJpYXQiOjE3MDQ4MTAxNzAsImV4cCI6MTcwNDg5NjU3MH0.T8kQ2zs5g4mEt3_qO2cicS_81LhmtYQu__RbtgjCjnk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/v1/api/order-all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"v1",
+										"api",
+										"order-all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Selected User Order by User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJpYXQiOjE3MDQ4MTAxNzAsImV4cCI6MTcwNDg5NjU3MH0.T8kQ2zs5g4mEt3_qO2cicS_81LhmtYQu__RbtgjCjnk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/v1/api/order-all/2ff0a41c-52e8-433d-b96a-402ffab8d2ca",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"v1",
+										"api",
+										"order-all",
+										"2ff0a41c-52e8-433d-b96a-402ffab8d2ca"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
@@ -1784,6 +1847,16 @@
 								{
 									"name": "Get All Invoices",
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoieW9naXByYXNzMTFAZ21haWwuY29tIiwibmFtYV9sZW5na2FwIjoiYWRtaW4xX2VkaXRlZCIsImFsYW1hdCI6ImFkbWluMV9lZGl0ZWQiLCJub21vcl90ZWxlcG9uIjoiYWRtaW4xX2VkaXRlZCIsIlNlY3JldElEIjoiOTAyMzE3NDc4NjEzOTA4NzkyNzgxMzg3MTg5MjM5ODEyMDM5ODEyOTA4MzkxMjczOTA4MTI5MDM4MTIzMTIzaGphc2RnODlhc3lkODlhc2RoajJxODlleTg5MnF5ZWprb3NhaGQ5MDgxcTIiLCJpYXQiOjE3MDMwNzUyODUsImV4cCI6MTcwMzE2MTY4NX0.50pKfS7O7QEKuswIO1LzW2JpH8dM8KFPwWWI01DpCa4",
+													"type": "string"
+												}
+											]
+										},
 										"method": "GET",
 										"header": [],
 										"url": {
@@ -2341,6 +2414,73 @@
 										"v1",
 										"api",
 										"notifications"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All User Order by User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJpYXQiOjE3MDQ4MTAxNzAsImV4cCI6MTcwNDg5NjU3MH0.T8kQ2zs5g4mEt3_qO2cicS_81LhmtYQu__RbtgjCjnk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/order-all",
+									"protocol": "https",
+									"host": [
+										"backend-app-ticketing-v12-production",
+										"up",
+										"railway",
+										"app"
+									],
+									"path": [
+										"v1",
+										"api",
+										"order-all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Selected User Order by User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJpYXQiOjE3MDQ4MTAxNzAsImV4cCI6MTcwNDg5NjU3MH0.T8kQ2zs5g4mEt3_qO2cicS_81LhmtYQu__RbtgjCjnk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/order-all/2ff0a41c-52e8-433d-b96a-402ffab8d2ca",
+									"protocol": "https",
+									"host": [
+										"backend-app-ticketing-v12-production",
+										"up",
+										"railway",
+										"app"
+									],
+									"path": [
+										"v1",
+										"api",
+										"order-all",
+										"2ff0a41c-52e8-433d-b96a-402ffab8d2ca"
 									]
 								}
 							},
