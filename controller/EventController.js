@@ -44,6 +44,8 @@ exports.getEventById = async (req, res) => {
         "date",
         "picture",
         "guest",
+        "description",
+        "syarat",
       ],
       where: {
         id: eventId,
