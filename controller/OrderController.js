@@ -518,7 +518,7 @@ exports.getAllUserOrder = async (req, res) => {
           attributes: ['event_name'],
         }
       ],
-      order: [["date_order", "DESC"]],
+      order: [["date_order", "DESC"],["time_order", "DESC"]],
     });
 
     if (allOrderData.length === 0) {
