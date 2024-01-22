@@ -512,6 +512,12 @@ exports.getAllUserOrder = async (req, res) => {
       where: {
         user_id: userIdAsStr,
       },
+      include: [
+        {
+          model: event,
+          attributes: ['event_name'],
+        }
+      ],
     });
 
     if (allOrderData.length === 0) {
@@ -545,6 +551,12 @@ exports.getUserOrderByIdOrder = async (req, res) => {
         user_id: userIdAsStr,
         order_id_unik: orderId,
       },
+      include: [
+        {
+          model: event,
+          attributes: ['event_name'],
+        }
+      ],
     });
 
     if (allOrderData.length === 0) {

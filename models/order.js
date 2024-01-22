@@ -11,7 +11,7 @@ module.exports = () => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      order.belongsTo(models.event, { foreignKey: 'event_id', targetKey: 'id' });
     }
   }
   order.init({
