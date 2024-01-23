@@ -131,6 +131,11 @@ exports.getEventByIdAdmin = async (req, res) => {
         id: eventId,
       },
     });
+    const ticketData = await ticket.findAll({
+      where: {
+        id_event: eventId,
+      },
+    });
 
     if (!eventData) {
       return res.status(404).json({
@@ -139,10 +144,15 @@ exports.getEventByIdAdmin = async (req, res) => {
       });
     }
 
+    let parameter = {
+      eventData,
+      ticketData,
+    };
+
     res.status(200).json({
       success: true,
       message: `Events Data Id ${eventId}`,
-      data: eventData,
+      data: parameter,
     });
   } catch (error) {
     console.log(error);
