@@ -97,6 +97,7 @@ exports.getAllEventAdmin = async (req, res) => {
         "description",
         "syarat",
         "status",
+        "qty"
       ],
       order: [["id", "ASC"]],
     });
