@@ -127,6 +127,7 @@ exports.getEventByIdAdmin = async (req, res) => {
         "description",
         "syarat",
         "status",
+        "qty"
       ],
       where: {
         id: eventId,
