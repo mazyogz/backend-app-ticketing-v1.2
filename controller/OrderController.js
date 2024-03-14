@@ -1,12 +1,19 @@
 const { v4: uuidv4 } = require("uuid");
-const { event, ticket, order, transactiondetail, user, invoice } = require("../models");
+const {
+  event,
+  ticket,
+  order,
+  transactiondetail,
+  user,
+  invoice,
+} = require("../models");
 const moment = require("moment");
-const midtransClient = require('midtrans-client');
+const midtransClient = require("midtrans-client");
 const nodemailer = require("nodemailer");
 // const qrImage = require("qr-image");
-const bwipjs = require("bwip-js")
-const qrcode = require("qrcode")
-
+const bwipjs = require("bwip-js");
+const qrcode = require("qrcode");
+const axios = require('axios');
 
 exports.order = async (req, res) => {
   const order_id_unik = uuidv4();
@@ -51,7 +58,7 @@ exports.order = async (req, res) => {
       gross: ticket_data.dataValues.price + tax,
       qty: 1,
       date_order: new Date(),
-      time_order: moment().add(7, 'hours').format("HH:mm:ss") + ' WIB' ,
+      time_order: moment().add(7, "hours").format("HH:mm:ss") + " WIB",
       status: "pending",
     });
 
@@ -106,7 +113,7 @@ exports.payment = async (req, res) => {
       },
       customer_details: {
         first_name: userData.nama_lengkap,
-        email: userData.email
+        email: userData.email,
       },
     };
 
@@ -121,7 +128,39 @@ exports.payment = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
+
+exports.refund = async (req, res) => {
+  const { orderId } = req.params;
+  const { reason } = req.body;
+
+  try {
+    const orderData = await order.findOne({
+      where: {
+        order_id_unik: orderId,
+      },
+    });
+
+    const refundKey = uuidv4();
+
+    const options = {
+      method: 'POST',
+      url: `https://api.sandbox.midtrans.com/v2/${orderId}/refund`,
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        authorization: 'Basic U0ItTWlkLXNlcnZlci12NFpKZGdRRVQ0TXkxN05nay1wYjZUMWc6'
+      },
+      data: { refund_key: refundKey, amount: orderData.gross, reason: reason }
+    };
+
+    const response = await axios.request(options);
+    res.json(response.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred during refund process' });
+  }
+};
 
 exports.notificationsMidtransServer = async (req, res) => {
   const ticketInvoiceCode = uuidv4();
@@ -264,47 +303,51 @@ exports.notificationsMidtransServer = async (req, res) => {
 };
 
 exports.createInvoice = async (req, res) => {
-
   const { orderId } = req.params;
   const userData = req.user;
   const userIdAsInteger = parseInt(userData.userId, 10);
 
   try {
-
     const isGeneratedInvoice = await invoice.findOne({
-        where: {
-          order_id: orderId,
-          is_generated: "true"
-        }
-      })
-      if (isGeneratedInvoice) {
-        return res.status(404).json({
-          success: false,
-          message: `Invoice already generated!`,
-        });
-      }
-    
+      where: {
+        order_id: orderId,
+        is_generated: "true",
+      },
+    });
+    if (isGeneratedInvoice) {
+      return res.status(404).json({
+        success: false,
+        message: `Invoice already generated!`,
+      });
+    }
+
     const generateRandomAlphaNumeric = (length) => {
-      const alphanumericChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      let result = '';
-    
+      const alphanumericChars =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      let result = "";
+
       for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * alphanumericChars.length);
+        const randomIndex = Math.floor(
+          Math.random() * alphanumericChars.length
+        );
         result += alphanumericChars.charAt(randomIndex);
       }
-    
+
       return result;
     };
-    
+
     const invoiceId = generateRandomAlphaNumeric(11);
-  
-    const qrCodeDataURL = await qrcode.toDataURL(invoiceId, { width: 600, height: 600 });
-    
+
+    const qrCodeDataURL = await qrcode.toDataURL(invoiceId, {
+      width: 600,
+      height: 600,
+    });
+
     const orderData = await transactiondetail.findOne({
       where: {
         order_id: orderId,
         transaction_status: "settlement" || "capture",
-        fraud_status: "accept"
+        fraud_status: "accept",
       },
     });
 
@@ -317,8 +360,9 @@ exports.createInvoice = async (req, res) => {
 
     const userVerificationsTransactions = await order.findOne({
       where: {
-        user_id: userIdAsInteger, order_id_unik: orderId ,
-      }
+        user_id: userIdAsInteger,
+        order_id_unik: orderId,
+      },
     });
 
     if (!userVerificationsTransactions) {
@@ -332,11 +376,11 @@ exports.createInvoice = async (req, res) => {
       user_id: userData.userId,
       nama_lengkap: userData.nama_lengkap,
       email: userData.email,
-      invoice_code:invoiceId,
+      invoice_code: invoiceId,
       order_id: orderId,
       is_generated: "true",
-      is_email_sent:"true"
-    })
+      is_email_sent: "true",
+    });
 
     const responseData = {
       userId: createInvoice.user_id,
@@ -344,7 +388,7 @@ exports.createInvoice = async (req, res) => {
       email: createInvoice.email,
       invoice_code: createInvoice.invoice_code,
       order_id: createInvoice.order_id,
-    }
+    };
 
     const transporter = nodemailer.createTransport({
       service: "Gmail",
@@ -370,15 +414,15 @@ exports.createInvoice = async (req, res) => {
       from: "Symphony Seats Official",
       to: responseData.email,
       subject: "Your Ticket Was Ready!",
-      html:htmlBody,
+      html: htmlBody,
       attachDataUrls: true,
       attachments: [
         {
-          filename: 'barcode.png',
-          content: qrCodeDataURL.split('base64,')[1],
-          encoding: 'base64'
-        }
-      ]
+          filename: "barcode.png",
+          content: qrCodeDataURL.split("base64,")[1],
+          encoding: "base64",
+        },
+      ],
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -394,7 +438,7 @@ exports.createInvoice = async (req, res) => {
     res.status(201).json({
       status: true,
       message: `Invoice Successfully Generated and sent to ${responseData.email} `,
-      data: responseData, 
+      data: responseData,
     });
   } catch (error) {
     res.status(500).json({
@@ -406,7 +450,6 @@ exports.createInvoice = async (req, res) => {
 };
 
 exports.resendInvoice = async (req, res) => {
-
   const { orderId } = req.params;
   const userData = req.user;
   const userIdAsStr = userData.userId.toString();
@@ -417,9 +460,9 @@ exports.resendInvoice = async (req, res) => {
         user_id: userIdAsStr,
         is_generated: "true",
         is_email_sent: "true",
-        order_id: orderId
-      }
-    })
+        order_id: orderId,
+      },
+    });
 
     if (isExistedInvoice) {
       const transporter = nodemailer.createTransport({
@@ -430,8 +473,11 @@ exports.resendInvoice = async (req, res) => {
         },
       });
 
-      const qrCodeDataURL = await qrcode.toDataURL(isExistedInvoice.invoice_code, { width: 600, height: 600 });
-  
+      const qrCodeDataURL = await qrcode.toDataURL(
+        isExistedInvoice.invoice_code,
+        { width: 600, height: 600 }
+      );
+
       const htmlBody = `
       <p>Hi ${isExistedInvoice.nama_lengkap},</p>
       <p>Your ticket details:</p>
@@ -443,22 +489,22 @@ exports.resendInvoice = async (req, res) => {
       </ul>
       <p>Ini adalah gambar barcode:</p><br/><img src="${qrCodeDataURL}" alt="Barcode"/>
     `;
-  
+
       const mailOptions = {
         from: "Symphony Seats Official",
         to: isExistedInvoice.email,
         subject: "Your Ticket Was Ready!",
-        html:htmlBody,
+        html: htmlBody,
         attachDataUrls: true,
         attachments: [
           {
-            filename: 'barcode.png',
-            content: qrCodeDataURL.split('base64,')[1],
-            encoding: 'base64'
-          }
-        ]
+            filename: "barcode.png",
+            content: qrCodeDataURL.split("base64,")[1],
+            encoding: "base64",
+          },
+        ],
       };
-  
+
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
           console.log(error);
@@ -468,11 +514,11 @@ exports.resendInvoice = async (req, res) => {
         }
         console.log("Email sent!:", info.response);
       });
-  
+
       res.status(201).json({
         status: true,
         message: `Invoice Successfully Generated and sent to ${isExistedInvoice.email} `,
-        data: isExistedInvoice, 
+        data: isExistedInvoice,
       });
     }
   } catch (error) {
@@ -501,7 +547,7 @@ exports.getAllInvoice = async (req, res) => {
       error: error.message,
     });
   }
-}
+};
 
 exports.getAllUserOrder = async (req, res) => {
   const userData = req.user;
@@ -515,10 +561,13 @@ exports.getAllUserOrder = async (req, res) => {
       include: [
         {
           model: event,
-          attributes: ['event_name'],
-        }
+          attributes: ["event_name"],
+        },
       ],
-      order: [["date_order", "DESC"],["time_order", "DESC"]],
+      order: [
+        ["date_order", "DESC"],
+        ["time_order", "DESC"],
+      ],
     });
 
     if (allOrderData.length === 0) {
@@ -555,8 +604,8 @@ exports.getUserOrderByIdOrder = async (req, res) => {
       include: [
         {
           model: event,
-          attributes: ['event_name'],
-        }
+          attributes: ["event_name"],
+        },
       ],
     });
 

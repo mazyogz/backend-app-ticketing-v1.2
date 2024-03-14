@@ -797,6 +797,62 @@
 							"response": []
 						},
 						{
+							"name": "Register User Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "dev_2",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "88888888",
+											"type": "text"
+										},
+										{
+											"key": "nama_lengkap",
+											"value": "user_dev2",
+											"type": "text"
+										},
+										{
+											"key": "alamat",
+											"value": "alamat lengkap user dev 1",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "supranatural345@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "nomor_telepon",
+											"value": "088888888888",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:5000/v1/api/register",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"v1",
+										"api",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Login",
 							"request": {
 								"method": "POST",
@@ -989,7 +1045,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJpYXQiOjE3MDI1NjA5NjUsImV4cCI6MTcwMjY0NzM2NX0.DbYcNlxjUYGmo6Xn87CKwsJvL6MTcoZZ8V69HTeFuhE",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJpYXQiOjE3MTA0MjkxOTMsImV4cCI6MTcxMDUxNTU5M30.sxBknNYR5Um_YgeVwywbEAvrFCsmZT43IuuJhv7BRBw",
 											"type": "string"
 										}
 									]
@@ -1033,7 +1089,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJpYXQiOjE3MDI1NjA5NjUsImV4cCI6MTcwMjY0NzM2NX0.DbYcNlxjUYGmo6Xn87CKwsJvL6MTcoZZ8V69HTeFuhE",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJpYXQiOjE3MTA0MjkxOTMsImV4cCI6MTcxMDUxNTU5M30.sxBknNYR5Um_YgeVwywbEAvrFCsmZT43IuuJhv7BRBw",
 											"type": "string"
 										}
 									]
@@ -1052,7 +1108,7 @@
 									]
 								},
 								"url": {
-									"raw": "http://localhost:5000/v1/api/payment/d897552a-a842-4378-ba47-a0b3040f90c3",
+									"raw": "http://localhost:5000/v1/api/payment/94f483ff-cc56-4acf-b3d4-baea164feb16",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -1062,7 +1118,7 @@
 										"v1",
 										"api",
 										"payment",
-										"d897552a-a842-4378-ba47-a0b3040f90c3"
+										"94f483ff-cc56-4acf-b3d4-baea164feb16"
 									]
 								}
 							},
@@ -1126,6 +1182,66 @@
 										"api",
 										"order-all",
 										"2ff0a41c-52e8-433d-b96a-402ffab8d2ca"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refund",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJpYXQiOjE3MTA0MjkxOTMsImV4cCI6MTcxMDUxNTU5M30.sxBknNYR5Um_YgeVwywbEAvrFCsmZT43IuuJhv7BRBw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "orderId",
+											"value": "3776af1a-00ed-45dc-9bc2-2410857bb8f8",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "refundKey",
+											"value": "12359786127963761782",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "amount",
+											"value": "27500",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "reason",
+											"value": "watch ",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/v1/api/refund/94f483ff-cc56-4acf-b3d4-baea164feb16",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"v1",
+										"api",
+										"refund",
+										"94f483ff-cc56-4acf-b3d4-baea164feb16"
 									]
 								}
 							},
@@ -2481,6 +2597,68 @@
 										"api",
 										"order-all",
 										"2ff0a41c-52e8-433d-b96a-402ffab8d2ca"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refund Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoic3VwcmFuYXR1cmFsMzQ1QGdtYWwuY29tIiwibmFtYV9sZW5na2FwIjoiU3VwcmEiLCJhbGFtYXQiOiJKYXRpbSIsIm5vbW9yX3RlbGVwb24iOiIwODg4ODg4ODg4ODgiLCJpYXQiOjE3MDI1NjA5NjUsImV4cCI6MTcwMjY0NzM2NX0.DbYcNlxjUYGmo6Xn87CKwsJvL6MTcoZZ8V69HTeFuhE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "orderId",
+											"value": "3776af1a-00ed-45dc-9bc2-2410857bb8f8",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "refundKey",
+											"value": "12359786127963761782",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "amount",
+											"value": "27500",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "reason",
+											"value": "watch ",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://backend-app-ticketing-v12-production.up.railway.app/v1/api/refund/94f483ff-cc56-4acf-b3d4-baea164feb16",
+									"protocol": "https",
+									"host": [
+										"backend-app-ticketing-v12-production",
+										"up",
+										"railway",
+										"app"
+									],
+									"path": [
+										"v1",
+										"api",
+										"refund",
+										"94f483ff-cc56-4acf-b3d4-baea164feb16"
 									]
 								}
 							},
