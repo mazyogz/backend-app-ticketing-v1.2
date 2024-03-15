@@ -246,7 +246,8 @@ exports.notificationsMidtransServer = async (req, res) => {
         } else if (
           transactionStatus == "cancel" ||
           transactionStatus == "deny" ||
-          transactionStatus == "expire"
+          transactionStatus == "expire" ||
+          transactionStatus == "refund" 
         ) {
           order.update(
             {
