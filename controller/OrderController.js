@@ -55,7 +55,7 @@ exports.order = async (req, res) => {
       user_id: userData.userId,
       event_id: event_id,
       ticket_id: ticket_id,
-      gross: ticket_data.dataValues.price + tax,
+      gross: ticket_data.dataValues.price,
       qty: 1,
       date_order: new Date(),
       time_order: moment().add(7, "hours").format("HH:mm:ss") + " WIB",
