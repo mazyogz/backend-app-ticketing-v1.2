@@ -395,7 +395,7 @@ exports.createInvoice = async (req, res) => {
       service: "Gmail",
       auth: {
         user: "symphonyseatsofficial@gmail.com",
-        pass: "tvrj jgxx ifnf xfaj",
+        pass: "egxt kxqo ghxf hbah",
       },
     });
 
